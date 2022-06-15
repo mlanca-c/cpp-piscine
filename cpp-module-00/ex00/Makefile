@@ -360,6 +360,12 @@ vpath %.d $(DEP_DIRS)
 
 all: ${BINS}
 
+run: all
+	./${BIN_ROOT}${NAME1}
+
+run-%: all
+	./${BIN_ROOT}${NAME1} $*
+
 .SECONDEXPANSION:
 ${BIN_ROOT}${NAME1}: ${LIBFT} ${MLX_LIB} $$(call get_files,$${@F},$${OBJS_LIST})
 	${AT}${PRINT} "${_BINS} $@\n" ${BLOCK}
