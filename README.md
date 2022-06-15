@@ -11,19 +11,18 @@
 # Cloning
 
  ```
- git clone <--recursive> git@github.com:mlanca-c/cpp-piscine.git
+ git clone git@github.com:mlanca-c/cpp-piscine.git
  cd cpp-piscine
- make all
  ```
  
 # Compiling
  
  ```
+ # Do this for each module's exercise
+ cd cpp-module-00
+ cd ex00
+ make run
  ```
-
-# Intro
-
- > [subject](subject.pdf)
 
 # Useful Links
 
