@@ -2,7 +2,7 @@
 
  <small description of project>
 
-[![Intro](https://img.shields.io/badge/Cursus-cpp-piscine-success?style=for-the-badge&logo=42)](https://github.com/mlanca-c/cpp-piscine)
+[![Intro](https://img.shields.io/badge/Cursus-cpp_piscine-success?style=for-the-badge&logo=42)](https://github.com/mlanca-c/cpp-piscine)
  
  [![Stars](https://img.shields.io/github/stars/mlanca-c/cpp-piscine?color=ffff00&label=Stars&logo=Stars&style=?style=flat)](https://github.com/mlanca-c/cpp-piscine)
  [![Size](https://img.shields.io/github/repo-size/mlanca-c/cpp-piscine?color=blue&label=Size&logo=Size&style=?style=flat)](https://github.com/mlanca-c/cpp-piscine)
