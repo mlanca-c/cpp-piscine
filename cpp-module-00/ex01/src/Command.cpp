@@ -6,7 +6,7 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:16:30 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/06/14 12:12:40 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/06/20 21:23:08 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	Command::add(PhoneBook& phoneBook) {
 }
 
 void	Command::search(PhoneBook& phoneBook) {
+
 	Contact				contact;
 	int					idx;
 	std::string			str;
@@ -63,18 +64,18 @@ void	Command::search(PhoneBook& phoneBook) {
 		std::cout << "[error]: no contacts" << std::endl;
 		return ;
 	}
-	std::cout << "|" << std::setfill(' ') << std::setw(10) << std::left << "idx" << "|";
-	std::cout << std::setfill(' ') << std::setw(10) << "name" << "|";
-	std::cout << std::setfill(' ') << std::setw(10) << "last name" << "|";
-	std::cout << std::setfill(' ') << std::setw(10) << "nick" << "|" << std::endl;
-	std::cout << std::setfill('-') << std::setw(44) << "|";
-	std::cout << "|" << std::endl;
+	std::cout << "|" << std::setfill(' ') << std::setw(10) << std::right << "idx" << "|";
+	std::cout << std::setfill(' ') << std::right << std::setw(10) << "name" << "|";
+	std::cout << std::setfill(' ') << std::right << std::setw(10) << "last name" << "|";
+	std::cout << std::setfill(' ') << std::right << std::setw(10) << "nick" << "|" << std::endl;
+
+	std::cout << "|" << std::setfill('-') << std::setw(44) << "|" << std::endl;
 
 	for (int i = 0; i < phoneBook.getNuContacts(); i++) {
-		std::cout << "|" << std::setfill(' ') << std::setw(10) << std::left << i << "|";
-		std::cout << std::setfill(' ') << std::setw(10) << phoneBook.getContact(i).getNameFormatted() << "|";
-		std::cout << std::setfill(' ') << std::setw(10) << phoneBook.getContact(i).getLastNameFormatted() << "|";
-		std::cout << std::setfill(' ') << std::setw(10) << phoneBook.getContact(i).getNicknameFormatted() << "|" << std::endl;
+		std::cout << "|" << std::setfill(' ') << std::right << std::setw(10) << i << "|";
+		std::cout << std::setfill(' ') << std::setw(10) << std::right << phoneBook.getContact(i).getNameFormatted() << "|";
+		std::cout << std::setfill(' ') << std::setw(10) << std::right << phoneBook.getContact(i).getLastNameFormatted() << "|";
+		std::cout << std::setfill(' ') << std::setw(10) << std::right << phoneBook.getContact(i).getNicknameFormatted() << "|" << std::endl;
 	}
 
 	while (1) {
@@ -101,7 +102,7 @@ void	Command::search(PhoneBook& phoneBook) {
 std::string	Command::tag(std::string tag) {
 	std::string line;
 
-	std::cout << "["<< tag << "]: ";
+	std::cout << std::setfill(' ') << std::setw(4) << "["<< tag << "]: ";
 	getline(std::cin, line);
 	return (line);
 }
