@@ -360,6 +360,11 @@ vpath %.d $(DEP_DIRS)
 
 all: ${BINS}
 
+run_bin_1: ${BIN_ROOT}${NAME1}
+	${AT} ./${BIN_ROOT}${NAME1} ${BLOCK}
+
+run: run_bin_1 fclean clean_dep
+
 .SECONDEXPANSION:
 ${BIN_ROOT}${NAME1}: ${LIBFT} ${MLX_LIB} $$(call get_files,$${@F},$${OBJS_LIST})
 	${AT}${PRINT} "${_BINS} $@\n" ${BLOCK}
