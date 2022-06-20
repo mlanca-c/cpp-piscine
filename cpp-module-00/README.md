@@ -26,4 +26,4 @@
 
 # Useful Links
 
- * [Wiki](https://github.com/mlanca-c/cpp-piscine/wiki/cpp-module-00)
+ * [Wiki](https://github.com/mlanca-c/cpp-piscine/wiki/Module-00)
