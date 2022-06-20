@@ -6,7 +6,7 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:39:50 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/06/14 12:42:09 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/06/20 21:50:00 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv) {
 		return (0);
 	}
 
-	for (int i = 0; i < argc; i++) {
+	for (int i = 1; i < argc; i++) {
 		for (int j = 0; j < (int)strlen(argv[i]); j++) {
 			std::cout << (char)toupper(argv[i][j]);
 		}
