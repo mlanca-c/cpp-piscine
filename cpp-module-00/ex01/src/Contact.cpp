@@ -6,7 +6,7 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:53:06 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/04/18 18:41:33 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/06/20 21:46:31 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	Contact::setSecret(std::string secret) {
 /* ************************************************************************** */
 
 std::string	Contact::getNameFormatted(void) {
-	if (this->_name.size() >= 10)
+	if (this->_name.size() > 10)
 		return (this->_name.substr(0, 9).append("."));
 	return (this->_name);
 }
@@ -95,10 +95,15 @@ std::string	Contact::getNicknameFormatted(void) {
 /* ************************************************************************** */
 
 std::ostream&	operator<<(std::ostream& os, Contact const& rhs) {
-	os << "[name]: " << rhs.getName() << std::endl;
-	os << "[last name]: " << rhs.getLastName() << std::endl;
-	os << "[nickname]: " << rhs.getNickname() << std::endl;
-	os << "[phone nu]: " << rhs.getPhone() << std::endl;
-	os << "[secret]: " << rhs.getSecret() << std::endl;
+	os << std::setfill(' ') << std::setw(20) << "[name]: ";
+	os << rhs.getName() << std::endl;
+	os << std::setfill(' ') << std::setw(20) << "[last name]: ";
+	os << rhs.getLastName() << std::endl;
+	os << std::setfill(' ') << std::setw(20) << "[nickname]: ";
+	os << rhs.getNickname() << std::endl;
+	os << std::setfill(' ') << std::setw(20) << "[phone nu]: ";
+	os << rhs.getPhone() << std::endl;
+	os << std::setfill(' ') << std::setw(20) << "[secret]: ";
+	os << rhs.getSecret() << std::endl;
 	return (os);
 }

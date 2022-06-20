@@ -6,7 +6,7 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:43:42 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/04/18 17:45:35 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/06/20 21:26:03 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CONTACT_HPP
 
 # include <string>
+# include <iomanip>
 # include <iostream>
 
 class Contact
