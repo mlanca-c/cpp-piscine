@@ -1,0 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/21 17:34:12 by mlanca-c          #+#    #+#             */
+/*   Updated: 2022/06/21 17:49:34 by mlanca-c         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "HumanA.hpp"
+
+/* ************************************************************************** */
+/* Constructors and Destructors                                               */
+/* ************************************************************************** */
+
+HumanA::~HumanA( void ) {
+	DEBUG("<HumanA> destructor called");
+}
+
+HumanA::HumanA( Weapon& weapon ): _weapon( weapon ) {
+	DEBUG("<HumanA> constructor called");
+}
+
+HumanA::HumanA( std::string name, Weapon& weapon ):
+	_name( name ), _weapon( weapon ) {
+	DEBUG("<" << this->getName() << "> constructor called");
+}
+
+/* ************************************************************************** */
+/* Getters and Setters                                                        */
+/* ************************************************************************** */
+
+std::string const&	HumanA::getName( void ) const { return ( this->_name ); }
+
+Weapon const&	HumanA::getWeapon( void ) const { return ( this->_weapon ); }
+
+void	HumanA::setName( std::string name ) { this->_name = name; }
+
+/* ************************************************************************** */
+/* Other Functions                                                            */
+/* ************************************************************************** */
+
+void	HumanA::attack( void ) const {
+	std::cout << this->getName() << " attacks with their ";
+	std::cout << this->getWeapon().getType() << std::endl;
+}
