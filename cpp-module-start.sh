@@ -45,6 +45,8 @@ date > .init
 git add .init
 make .init
 git commit -m "init"
+rm -rf Makefile
+cd ../
 rm -rf cpp-module-start.sh
 rm -rf README.tmp.md
 rm -rf Makefile
