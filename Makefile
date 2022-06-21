@@ -437,8 +437,6 @@ debug_msan_re: fclean debug_msan
 .init:
 	${AT}${MKDIR} ${INC_ROOT} ${BLOCK}
 	${AT}${MKDIR} ${SRC_ROOT} ${BLOCK}
-	${AT}date > $@ ${BLOCK}
-	${AT} git add $@ ${BLOCK}
 
 # Meta target to force a target to be executed
 .FORCE: ;
