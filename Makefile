@@ -39,7 +39,7 @@
 # the library section.
 # **************************************************************************** #
 
-PROJECT	:= cpp-piscine
+PROJECT	:= ...
 VERSION	:= 3
 
 USER	:= mlanca-c
@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= megaphone
+NAME1	:= ...
 
 NAMES	:= ${NAME1}
 
@@ -367,9 +367,12 @@ ${BIN_ROOT}${NAME1}: ${LIBFT} ${MLX_LIB} $$(call get_files,$${@F},$${OBJS_LIST})
 	${AT}${CC} ${CFLAGS} ${INCS} ${ASAN_FILE}\
 		$(call get_files,${@F},${OBJS_LIST}) ${LIBS} -o $@ ${BLOCK}
 
-${LIBFT}: $$(call get_lib_target,$${DEFAULT_LIBS},all) ;
+run_bin_1: ${BIN_ROOT}${NAME1}
+	${AT} ./${BIN_ROOT}${NAME1} ${BLOCK}
 
-${MLX_LIB}: make -C ${MLX_ROOT}
+run: run_bin_1
+
+run_clean: run fclean clean_dep
 
 # **************************************************************************** #
 # Clean Targets
@@ -432,32 +435,10 @@ debug_msan_re: fclean debug_msan
 # **************************************************************************** #
 
 .init:
-	${AT}${PRINT} "${_INFO} creating folder structure\n" ${BLOCK}
-	# ${AT}${MKDIR} ${DEP_ROOT} ${BLOCK}
-	# ${AT}${MKDIR} ${BIN_ROOT} ${BLOCK}
-	# ${AT}${MKDIR} ${DEP_ROOT} ${BLOCK}
-	# ${AT}${MKDIR} ${INC_ROOT} ${BLOCK}
-	# ${AT}${MKDIR} ${OBJ_ROOT} ${BLOCK}
-	# ${AT}${MKDIR} ${SRC_ROOT} ${BLOCK}
-	${AT}git clone git@github.com:mlanca-c/Generic-README.git ${BLOCK}
-	${AT}mv Generic-README/README.md ./ ${BLOCK}
-	${AT}rm -rf Generic-README ${BLOCK}
-	${AT}${SED} 's/NAME/${PROJECT}/g' README.md ${BLOCK}
-
-	${AT}${PRINT} "${_INFO} initializing git repository\n" ${BLOCK}
-	${AT}git init ${BLOCK}
-	${AT}echo "*.o\n*.d\n.vscode\na.out\n.DS_Store\nbin/\n*.ignore"\
-		> .gitignore ${BLOCK}
+	${AT}${MKDIR} ${INC_ROOT} ${BLOCK}
+	${AT}${MKDIR} ${SRC_ROOT} ${BLOCK}
 	${AT}date > $@ ${BLOCK}
-	${AT}${PRINT} "${_INFO} creating first commit\n" ${BLOCK}
-	${AT}git add .gitignore ${BLOCK}
-	${AT}git add $@ ${BLOCK}
-	${AT}git add Makefile ${BLOCK}
-	${AT}git commit -m "init" ${BLOCK}
-	${AT}git branch -M main ${BLOCK}
-	${AT}git remote add origin git@github.com:mlanca-c/${PROJECT}.git ${BLOCK}
-	${AT}git status ${BLOCK}
-	${AT}${PRINT} "${_INFO} missing: git push -u origin main\n" ${BLOCK}
+	${AT} git add $@ ${BLOCK}
 
 # Meta target to force a target to be executed
 .FORCE: ;
