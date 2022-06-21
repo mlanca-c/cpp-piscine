@@ -1,6 +1,6 @@
-# cpp-piscine Module-0NU
+# cpp-piscine Module-0{NU}
 
-[![Intro](https://img.shields.io/badge/Cursus-cpp_module_0NU-success?style=for-the-badge&logo=42)](https://github.com/mlanca-c/cpp-piscine)
+[![Intro](https://img.shields.io/badge/Cursus-cpp_module_0{NU}-success?style=for-the-badge&logo=42)](https://github.com/mlanca-c/cpp-piscine)
  
  [![Stars](https://img.shields.io/github/stars/mlanca-c/cpp-piscine?color=ffff00&label=Stars&logo=Stars&style=?style=flat)](https://github.com/mlanca-c/cpp-piscine)
  [![Size](https://img.shields.io/github/repo-size/mlanca-c/cpp-piscine?color=blue&label=Size&logo=Size&style=?style=flat)](https://github.com/mlanca-c/cpp-piscine)
@@ -17,11 +17,11 @@
  
  ```
  # Do this for each module's exercise
- cd cpp-module-0NU
+ cd cpp-module-0{NU}
  cd ex00
  make run
  ```
 
 # Useful Links
 
- * [Wiki](https://github.com/mlanca-c/cpp-piscine/wiki/Module-0NU)
+ * [Wiki](https://github.com/mlanca-c/cpp-piscine/wiki/Module-0{NU})
