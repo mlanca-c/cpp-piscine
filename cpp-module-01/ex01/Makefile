@@ -39,7 +39,7 @@
 # the library section.
 # **************************************************************************** #
 
-PROJECT	:= ...
+PROJECT	:= cpp-module-01
 VERSION	:= 3
 
 USER	:= mlanca-c
@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= ...
+NAME1	:= ex01
 
 NAMES	:= ${NAME1}
 
@@ -371,6 +371,12 @@ run_bin_1: ${BIN_ROOT}${NAME1}
 	${AT} ./${BIN_ROOT}${NAME1} ${BLOCK}
 
 run: run_bin_1
+
+rund: CFLAGS += -DD=1
+rund: clean run
+
+run-%: ${BIN}${NAME1}
+	${AT} ./${BIN_ROOT}${NAME1} $* ${BLOCK}
 
 run_clean: run fclean clean_dep
 
