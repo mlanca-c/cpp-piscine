@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:01:12 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/22 14:07:58 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/22 14:21:31 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,25 @@ int	main( int argc, char *argv[] ) {
 		std::cout << "a: " << a.getRawBits() << std::endl;
 		std::cout << "b: " << b.getRawBits() << std::endl;
 		std::cout << "c: " << c.getRawBits() << std::endl;
+	}
+	{
+		LOG("test 2: testing a few more stuff");
+
+		Fixed	a;
+		Fixed	b( a );
+		Fixed	c;
+
+		a.setRawBits( 42 );
+		std::cout << "a: " << a.getRawBits() << std::endl;
+		std::cout << "b: " << b.getRawBits() << std::endl;
+		std::cout << "c: " << c.getRawBits() << std::endl;
+
+		b = a;
+		c.setRawBits( 21 );
+		std::cout << "a: " << a.getRawBits() << std::endl;
+		std::cout << "b: " << b.getRawBits() << std::endl;
+		std::cout << "c: " << c.getRawBits() << std::endl;
+
 	}
 	return ( 0 );
 }
