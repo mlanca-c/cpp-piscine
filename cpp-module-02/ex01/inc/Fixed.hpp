@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:52:49 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/22 14:25:39 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/22 16:55:59 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 /* ************************************************************************** */
 
 # include <iostream>
+# include <cmath>
 # include "Debug.hpp"
 
 /* ************************************************************************** */
@@ -33,8 +34,8 @@ class Fixed {
 		Fixed( Fixed const& src );
 		~Fixed( void );
 
-		Fixed ( int i );
-		Fixed ( float f );
+		Fixed ( int const i );
+		Fixed ( float const f );
 
 		/* Operator Overload */
 		Fixed&	operator=( Fixed const& rhs );
@@ -54,5 +55,11 @@ class Fixed {
 		static const int	_fBits = 8;
 
 };
+
+/* ************************************************************************** */
+/* Other Functions                                                            */
+/* ************************************************************************** */
+
+std::ostream&	operator<<( std::ostream& os, Fixed const& rhs );
 
 #endif /* FIXED_HPP */

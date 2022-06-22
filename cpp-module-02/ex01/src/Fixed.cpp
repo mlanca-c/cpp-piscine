@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:35:44 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/22 14:07:21 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/22 16:58:18 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ Fixed::Fixed( Fixed const& src ) {
 
 Fixed::~Fixed( void ) { DEBUG( "<Fixed> destructor called"); }
 
+Fixed::Fixed ( int const i ) : _raw( i << this->_fBits ) {
+	DEBUG( "<Fixed:"<< i << "> constructor called");
+}
+
+Fixed::Fixed ( float const f ) : _raw( roundf( f * ( 1 << this->_fBits ))) {
+	DEBUG( "<Fixed:" << f << "> constructor called");
+}
+
 /* ************************************************************************** */
 /* Operator Overload                                                          */
 /* ************************************************************************** */
@@ -35,6 +43,11 @@ Fixed&	Fixed::operator=( Fixed const& rhs ) {
 	DEBUG("<Fixed> operator= called");
 	this->setRawBits( rhs.getRawBits() );
 	return (*this);
+}
+
+std::ostream&	operator<<( std::ostream& os, Fixed const& rhs ) {
+	os << rhs.toFloat();
+	return ( os );
 }
 
 /* ************************************************************************** */
@@ -49,3 +62,10 @@ void	Fixed::setRawBits( int const raw ) { this->_raw = raw; }
 /* Other Functins                                                             */
 /* ************************************************************************** */
 
+int		Fixed::toInt( void ) const {
+	return ( this->_raw >> this->_fBits );
+}
+
+float	Fixed::toFloat( void ) const {
+	return ( this->_raw / ( float )( 1 << this->_fBits ));
+}
