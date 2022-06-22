@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= ex03
+NAME1	:= weapon
 
 NAMES	:= ${NAME1}
 
