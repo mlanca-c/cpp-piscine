@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= ex00
+NAME1	:= brainZ
 
 NAMES	:= ${NAME1}
 
