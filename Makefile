@@ -372,6 +372,9 @@ run_bin_1: ${BIN_ROOT}${NAME1}
 
 run: run_bin_1
 
+rund: CFLAGS += -DD=1
+rund: clean run
+
 run_clean: run fclean clean_dep
 
 # **************************************************************************** #
