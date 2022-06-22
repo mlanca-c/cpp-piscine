@@ -10,6 +10,7 @@ cd ${module}
 
 curl https://raw.githubusercontent.com/mlanca-c/cpp-piscine/main/README.tmp.md > README.md
 curl https://raw.githubusercontent.com/mlanca-c/cpp-piscine/main/Makefile > Makefile
+curl https://raw.githubusercontent.com/mlanca-c/cpp-piscine/main/Debug.hpp > Debug.hpp
 
 echo -n "How many exercises? "
 read nu
@@ -36,6 +37,7 @@ do
 	cd ${exercise}
 	cp -rf ../Makefile ./
 	make .init
+	cp -rf ../Debug.hpp inc/
 	cd ../
 
 	i=$((i+1))
@@ -45,6 +47,7 @@ date > .init
 git add .init
 make .init
 git commit -m "init"
+
 rm -rf Makefile
 cd ../
 rm -rf cpp-module-start.sh
