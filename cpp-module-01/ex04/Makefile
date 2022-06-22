@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= ex04
+NAME1	:= sed
 
 NAMES	:= ${NAME1}
 
