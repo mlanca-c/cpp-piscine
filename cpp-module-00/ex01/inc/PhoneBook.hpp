@@ -6,29 +6,39 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:40:12 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/04/18 18:03:51 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/06/23 12:21:31 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+/* ************************************************************************** */
+/* Headers                                                                    */
+/* ************************************************************************** */
+
 # include <string>
+# include "Debug.hpp"
 # include "Contact.hpp"
 
-class PhoneBook
-{
+/* ************************************************************************** */
+/* Classes                                                                    */
+/* ************************************************************************** */
+
+class PhoneBook {
 
 	public:
 
-		/* Constructor and Destructor */
-		PhoneBook(void);
-		~PhoneBook(void);
+		/* Constructors and Destructors */
+		PhoneBook( void );
+		~PhoneBook( void );
 
 		/* Getters and Setters */
-		int			getNuContacts(void);
-		Contact		getContact(int idx);
-		void		addContact(Contact& contact);
+		int			getNuContacts( void );
+		Contact		getContact( int idx );
+
+		/* Other Functions */
+		void		addContact( Contact& contact );
 
 	private:
 
