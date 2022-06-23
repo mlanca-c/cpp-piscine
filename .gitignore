@@ -5,3 +5,5 @@ a.out
 .DS_Store
 bin/
 *.ignore
+.ccls-cache
+
