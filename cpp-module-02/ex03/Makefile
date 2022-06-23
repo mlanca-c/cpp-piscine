@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= bsp
+NAME1	:= bsq
 
 NAMES	:= ${NAME1}
 
@@ -141,7 +141,7 @@ else ifeq (${LANG},C++)
 endif
 
 # Compiler flags
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -std=c++98
 
 # Pedantic flags
 ifeq (${PEDANTIC},true)
@@ -371,6 +371,12 @@ run_bin_1: ${BIN_ROOT}${NAME1}
 	${AT} ./${BIN_ROOT}${NAME1} ${BLOCK}
 
 run: run_bin_1
+
+rund: CFLAGS += -DD=1
+rund: clean run
+
+run-%: ${BIN_ROOT}${NAME1}
+	${AT} ./${BIN_ROOT}${NAME1} $* ${BLOCK}
 
 run_clean: run fclean clean_dep
 
