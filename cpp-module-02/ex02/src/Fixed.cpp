@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:35:44 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/22 17:25:07 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/06/23 17:07:57 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@ Fixed::Fixed( void ) : _raw( 0 ) {
 }
 
 Fixed::Fixed( Fixed const& src ) {
+
 	DEBUG( "<Fixed> copy constructor called" );
 	*this = src;
 }
 
-Fixed::~Fixed( void ) { DEBUG( "<Fixed> destructor called"); }
+Fixed::~Fixed( void ) {
+	DEBUG( "<Fixed:"<< this->toFloat() << "> destructor called");
+}
 
 Fixed::Fixed ( int const i ) : _raw( i << this->_fBits ) {
 	DEBUG( "<Fixed:"<< i << "> constructor called");
@@ -40,50 +43,97 @@ Fixed::Fixed ( float const f ) : _raw( roundf( f * ( 1 << this->_fBits ))) {
 /* ************************************************************************** */
 
 Fixed&	Fixed::operator=( Fixed const& rhs ) {
-	DEBUG("<Fixed> operator= called");
-	this->setRawBits( rhs.getRawBits() );
-	return (*this);
+
+	this->_raw = rhs.getRawBits();
+	return ( *this );
 }
 
 std::ostream&	operator<<( std::ostream& os, Fixed const& rhs ) {
+
 	os << rhs.toFloat();
 	return ( os );
 }
 
 /* Comparison Operators */
-bool	Fixed::operator<( Fixed const& rhs ) const;
+bool	Fixed::operator<( Fixed const& rhs ) const {
+	return ( this->_raw < rhs.getRawBits() );
+}
 
-bool	Fixed::operator>( Fixed const& rhs ) const;
+bool	Fixed::operator>( Fixed const& rhs ) const {
+	return ( rhs < *this );
+}
 
-bool	Fixed::operator<=( Fixed const& rhs ) const;
+bool	Fixed::operator<=( Fixed const& rhs ) const {
+	return ( !( *this > rhs ));
+}
 
-bool	Fixed::operator>=( Fixed const& rhs ) const;
+bool	Fixed::operator>=( Fixed const& rhs ) const {
+	return ( !( *this < rhs ));
+}
 
-bool	Fixed::operator==( Fixed const& rhs ) const;
+bool	Fixed::operator==( Fixed const& rhs ) const {
+	return ( this->_raw == rhs.getRawBits() );
+}
 
-bool	Fixed::operator!=( Fixed const& rhs ) const;
+bool	Fixed::operator!=( Fixed const& rhs ) const {
+	return ( !( *this == rhs ));
+}
 
 /* Arithmetic Operators */
-Fixed	Fixed::operator+( void ) const;
 
-Fixed	Fixed::operator-( void ) const;
+Fixed	Fixed::operator+( void ) const {
+	return ( Fixed( this->toFloat() ));
+}
 
-Fixed	Fixed::operator+( Fixed const& rhs ) const;
+Fixed	Fixed::operator-( void ) const {
+	return ( Fixed( this->toFloat() * -1 ));
+}
 
-Fixed	Fixed::operator-( Fixed const& rhs ) const;
+Fixed	Fixed::operator+( Fixed const& rhs ) const {
+	return ( Fixed( this->toFloat() + rhs.toFloat() ));
+}
 
-Fixed	Fixed::operator*( Fixed const& rhs ) const;
+Fixed	Fixed::operator-( Fixed const& rhs ) const {
+	return ( Fixed( this->toFloat() - rhs.toFloat() ));
+}
 
-Fixed	Fixed::operator/( Fixed const& rhs ) const;
+Fixed	Fixed::operator*( Fixed const& rhs ) const {
+	return ( Fixed( this->toFloat() * rhs.toFloat() ));
+}
 
-/* Increment/Decrement Operators */
-Fixed	Fixed::operator++( void );
+Fixed	Fixed::operator/( Fixed const& rhs ) const {
+	return ( Fixed( this->toFloat() / rhs.toFloat() ));
+}
 
-Fixed	Fixed::operator--( void );
+/* Increment and Decrement Operators */
 
-Fixed&	Fixed::operator++( int );
+Fixed	Fixed::operator++( int ) {
 
-Fixed&	Fixed::operator--( int );
+	Fixed	tmp( *this );
+	
+	++(*this);
+	return ( tmp );
+}
+
+Fixed	Fixed::operator--( int ) {
+
+	Fixed	tmp( *this );
+
+	--(*this);
+	return ( tmp );
+}
+
+Fixed&	Fixed::operator++( void ) {
+	
+	*this = *this + 1;
+	return ( *this );
+}
+
+Fixed&	Fixed::operator--( void ) {
+
+	*this = *this - 1;
+	return ( *this );
+}
 
 /* ************************************************************************** */
 /* Getters and Setters                                                        */
@@ -97,18 +147,24 @@ void	Fixed::setRawBits( int const raw ) { this->_raw = raw; }
 /* Other Functins                                                             */
 /* ************************************************************************** */
 
-int		Fixed::toInt( void ) const {
-	return ( this->_raw >> this->_fBits );
-}
+int		Fixed::toInt( void ) const { return ( this->_raw >> this->_fBits ); }
 
 float	Fixed::toFloat( void ) const {
 	return ( this->_raw / ( float )( 1 << this->_fBits ));
 }
 
-Fixed const&	Fixed::max( Fixed const& lhs, Fixed const& rhs ) const;
+Fixed const&	Fixed::max( Fixed const& lhs, Fixed const& rhs ) {
+	return ( lhs > rhs ? lhs : rhs );
+}
 
-Fixed&	Fixed::max( Fixed& lhs, Fixed& rhs ) const;
+Fixed const&	Fixed::min( Fixed const& lhs, Fixed const& rhs ) {
+	return ( lhs > rhs ? rhs : lhs );
+}
 
-Fixed const&	Fixed::min( Fixed const& lhs, Fixed const& rhs ) const;
+Fixed&	Fixed::max( Fixed& lhs, Fixed& rhs ) {
+	return ( lhs > rhs ? lhs : rhs );
+}
 
-Fixed&	Fixed::min( Fixed& lhs, Fixed& rhs ) const;
+Fixed&	Fixed::min( Fixed& lhs, Fixed& rhs ) {
+	return ( lhs > rhs ? rhs : lhs );
+}

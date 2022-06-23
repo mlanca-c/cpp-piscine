@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:52:49 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/22 17:24:36 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/06/23 16:51:42 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ class Fixed {
 		Fixed	operator*( Fixed const& rhs ) const;
 		Fixed	operator/( Fixed const& rhs ) const;
 
-		Fixed	operator++( void );
-		Fixed	operator--( void );
-		Fixed&	operator++( int );
-		Fixed&	operator--( int );
+		Fixed&	operator++( void );
+		Fixed&	operator--( void );
+		Fixed	operator++( int );
+		Fixed	operator--( int );
 
 		/* Getters and Setters */
 		int		getRawBits( void ) const;
@@ -67,10 +67,10 @@ class Fixed {
 		int		toInt( void ) const;
 		float	toFloat( void ) const;
 
-		static Fixed const&	max( Fixed const& lhs, Fixed const& rhs ) const;
-		static Fixed&		max( Fixed& lhs, Fixed& rhs ) const;
-		static Fixed const&	min( Fixed const& lhs, Fixed const& rhs ) const;
-		static Fixed&		min( Fixed& lhs, Fixed& rhs ) const;
+		static Fixed const&	max( Fixed const& lhs, Fixed const& rhs );
+		static Fixed const&	min( Fixed const& lhs, Fixed const& rhs );
+		static Fixed&		max( Fixed& lhs, Fixed& rhs );
+		static Fixed&		min( Fixed& lhs, Fixed& rhs );
 
 	private:
 
