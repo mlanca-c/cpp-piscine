@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:52:49 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/23 16:51:42 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/06/24 13:04:29 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ class Fixed {
 		/* Other Functions */
 		int		toInt( void ) const;
 		float	toFloat( void ) const;
+		Fixed	fabs( void ) const;
 
 		static Fixed const&	max( Fixed const& lhs, Fixed const& rhs );
 		static Fixed const&	min( Fixed const& lhs, Fixed const& rhs );

@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:35:44 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/23 17:28:46 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/06/24 13:05:46 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,10 @@ int		Fixed::toInt( void ) const { return ( this->_raw >> this->_fBits ); }
 
 float	Fixed::toFloat( void ) const {
 	return ( this->_raw / ( float )( 1 << this->_fBits ));
+}
+
+Fixed	Fixed::fabs( void ) const {
+	return ( this->toFloat() > 0 ? *this : -(*this));
 }
 
 Fixed const&	Fixed::max( Fixed const& lhs, Fixed const& rhs ) {
