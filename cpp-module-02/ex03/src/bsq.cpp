@@ -6,7 +6,7 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 17:11:28 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/06/24 15:39:52 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/25 14:20:58 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,18 @@
 
 bool	bsp( Point const a, Point const b, Point const c, Point const point) {
 
-	Fixed	areaABC;
-	Fixed	areaABP;
-	Fixed	areaACP;
-	Fixed	areaBCP;
+	Point	v1, v2, v3;
+	Fixed	f1, f2, fx, fy;
 
-	areaABC = Point::area( a, b, c );
-	areaABP = Point::area( a, b, point );
-	areaACP = Point::area( a, c, point );
-	areaBCP = Point::area( b, c, point );
+	v1 = b - a;
+	v2 = c - a;
+	v3 = point - a;
 
-	std::cout << "area( a, b, c ): " << areaABC << std::endl;
-	std::cout << "area( a, b, point ): " << areaABP << std::endl;
-	std::cout << "area( a, c, point ): " << areaACP << std::endl;
-	std::cout << "area( b, c, point ): " << areaBCP << std::endl;
-	std::cout << "sum: " << areaABC + areaABP + areaACP + areaBCP << std::endl;
+	f1 = v1 * v1;
+	f2 = v2 * v2;
 
-	if ( areaABC == 0 || areaABP == 0 || areaACP == 0 || areaBCP == 0 )
-		return (false);
-	return ( areaABC < ( areaABP + areaACP + areaBCP ) );
+	fx = v3 * v1 / f1;
+	fy = v3 * v2 / f2;
+
+	return ( fx > 0 && fy > 0 && fx + fy < 1 );
 }

@@ -6,7 +6,7 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 17:11:00 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/06/24 15:38:07 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/25 14:03:53 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,13 @@ Point::Point( Point const& src ) : _x( src.getX() ), _y( src.getY() ){
 
 Point::Point( float const x, float const y ) :
 	_x( Fixed( x )), _y( Fixed( y )) {
-	DEBUG( "<Point> constructor called" );
+	DEBUG( "<Point> float constructor called" );
+}
+
+Point::Point( Fixed x, Fixed y ) {
+	const_cast<Fixed&>(_x) = x;
+	const_cast<Fixed&>(_y) = y;
+	DEBUG( "<Point> fixed constructor called" );
 }
 
 /* ************************************************************************** */
@@ -38,12 +44,27 @@ Point::Point( float const x, float const y ) :
 /* ************************************************************************** */
 
 Point	Point::operator=( Point const& rhs ) {
-	return ( Point( rhs ));
+
+	const_cast<Fixed&>(_x) = rhs._x;
+	const_cast<Fixed&>(_y) = rhs._y;
+	return ( *this );
+}
+
+Point	Point::operator+( Point const& rhs ) const {
+	return ( Point( this->_x + rhs._x, this->_y + rhs._y ));
+}
+
+Point	Point::operator-( Point const& rhs ) const {
+	return ( Point( this->_x - rhs._x, this->_y - rhs._y ));
+}
+
+Fixed	Point::operator*( Point const& rhs ) const {
+	return ( Fixed( this->_x * rhs._x + this->_y * rhs._y ));
 }
 
 std::ostream&	operator<<( std::ostream& os, Point const& rhs ) {
 
-	os << "Point( " << rhs.getX() << ", " << rhs.getY() << " )";
+	os << "( " << rhs.getX() << ", " << rhs.getY() << " )";
 	return ( os );
 }
 
@@ -59,15 +80,3 @@ Fixed const&  Point::getY( void ) const { return ( this->_y ); }
 /* Other Functions                                                            */
 /* ************************************************************************** */
 
-Fixed Point::area( Point const a, Point const b, Point const c) {
-
-	Fixed	area;
-
-	area = a.getX() * ( b.getY() - c.getY() );
-	area = area + b.getX() * ( a.getY() - c.getY() );
-	area = area + c.getX() * ( a.getY() - b.getY() );
-	area = area.fabs();
-	area = area / 2.0f;
-
-	return ( area );
-}

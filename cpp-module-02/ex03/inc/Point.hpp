@@ -6,7 +6,7 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 17:11:59 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/06/24 12:57:47 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/25 14:03:55 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,16 @@ class Point {
 
 		/* Operator Overload */
 		Point	operator=( Point const& rhs );
+		Point	operator+( Point const& rhs ) const;
+		Point	operator-( Point const& rhs ) const;
+
+		Fixed	operator*( Point const& rhs ) const;
 
 		/* Getters and Setters */
 		Fixed const& getX( void ) const;
 		Fixed const& getY( void ) const;
 
 		/* Other Functions */
-		static Fixed area( Point const a, Point const b, Point const c);
 
 	private:
 
