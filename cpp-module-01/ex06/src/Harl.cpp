@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:04:49 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/22 13:16:01 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/26 15:01:47 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,19 @@
 /* Constructors and Destructors                                               */
 /* ************************************************************************** */
 
-Harl::Harl( void ) { DEBUG( "<Harl> default constructor called" ); }
+Harl::Harl( void ) {
+
+	this->_f[0] = &Harl::debug;
+	this->_level[0] = "DEBUG";
+	this->_f[1] = &Harl::info;
+	this->_level[1] = "INFO";
+	this->_f[2] = &Harl::warning;
+	this->_level[2] = "WARNING";
+	this->_f[3] = &Harl::error;
+	this->_level[3] = "ERROR";
+
+	DEBUG( "<Harl> default constructor called" );
+}
 
 Harl::~Harl( void ) { DEBUG( "<Harl> destructor called" ); }
 

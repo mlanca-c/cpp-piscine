@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Debug.hpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/22 11:58:21 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/22 13:08:13 by mlancac          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef DEBUG_HPP
 # define DEBUG_HPP
 
@@ -23,17 +11,21 @@
 /* Macros                                                                     */
 /* ************************************************************************** */
 
-# define ANSI_RED	"\033[31m"
-# define ANSI_RESET	"\033[0m"
+/* Ansi Colors */
+# define ANSI_RESET		"\033[0m"
+# define ANSI_RED		"\033[31m"
+# define ANSI_GREEN		"\033[32m"
+# define ANSI_YELLOW	"\033[33m"
 
+/* Message Templates */
 # if D == 1
 #  define DEBUG(X)	std::cout << ANSI_RED << X << ANSI_RESET << std::endl
-#  define LOG(X)	std::cout << X << std::endl
+#  define LOG(X)	std::cout << ANSI_GREEN << X << ANSI_RESET << std::endl
 # else
 #  define DEBUG(X)
-#  define LOG(X)
+#  define LOG(X)	std::cout << X << std::endl
 # endif /* D */
 
-# define ERROR(X)	std::cout << "cpp-module-01: ex06: " << X << std::endl
+# define ERROR(X)	std::cout << ANSI_RED << "error: " << ANSI_RESET << X << std::endl
 
 #endif /* DEBUG_HPP */
