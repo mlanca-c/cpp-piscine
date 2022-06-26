@@ -6,14 +6,18 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:36:14 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/06/21 15:12:18 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/06/26 14:07:48 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Zombie.hpp"
 
-int	main(void) {
+int	main( int argc, char *argv[] ) {
+
+	( void )argc;
+	( void )argv;
+
 	Zombie	z = Zombie( "z" );
 	Zombie*	newZ;
 
