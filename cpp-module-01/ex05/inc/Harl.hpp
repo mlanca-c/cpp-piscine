@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:00:32 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/22 12:49:59 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/26 14:58:15 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class Harl {
 		~Harl( void );
 
 		/* Other Functions */
+		void	filter( std::string level );
 		void	complain( std::string level );
 
 	private:
@@ -46,9 +47,8 @@ class Harl {
 		void	error();
 
 		/* Private Attributes */
-		void (Harl::*_f[4])( void ) = { &Harl::debug, &Harl::info,
-			&Harl::warning, &Harl::error };
-		std::string	_level[4] = { "DEBUG", "INFO", "WARNING", "ERROR" };
+		void (Harl::*_f[4])( void );
+		std::string	_level[4];
 
 };
 

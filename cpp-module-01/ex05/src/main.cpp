@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 11:56:42 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/22 12:41:06 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/26 15:04:54 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,17 @@ int	main( int argc, char *argv[] ) {
 
 	Harl	harl = Harl();
 
-	if (argc == 1) {
-		ERROR( "wrong number of arguments" );
+	{
+		LOG( "test 1: basic test" );
+		harl.complain( "DEBUG" );
 	}
-	harl.complain( argv[1] );
+
+	if ( argc != 2 ) {
+		return ( 0 );
+	}
+	{
+		LOG( "test 2: user testing" );
+		harl.complain( argv[1] );
+	}
 	return (0);
 }
