@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 15:34:13 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/26 16:21:59 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/26 17:30:12 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ class ClapTrap {
 		unsigned int	_hit;
 		unsigned int	_energy;
 		unsigned int	_attack;
-
-		static unsigned int	_energyMax;
 
 };
 

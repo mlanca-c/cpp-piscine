@@ -6,13 +6,11 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 15:37:00 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/26 16:27:58 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/26 17:30:18 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-
-unsigned int	ClapTrap::_energyMax = 20;
 
 /* ************************************************************************** */
 /* Contructors and Destructors                                                */
@@ -112,7 +110,6 @@ void	ClapTrap::takeDamage( unsigned int amount ) {
 void	ClapTrap::beRepaired( unsigned int amount ) {
 
 	this->_hit += amount;
-	this->_energy = ClapTrap::_energyMax;
 
 	std::cout << "ClapTrap " << this->_name << " was repaired " << amount;
 	std::cout << " points!" << std::endl;
