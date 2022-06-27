@@ -39,7 +39,7 @@
 # the library section.
 # **************************************************************************** #
 
-PROJECT	:= ...
+PROJECT	:= cpp-module-0
 VERSION	:= 3
 
 USER	:= mlanca-c
@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= ...
+NAME1	:= bin
 
 NAMES	:= ${NAME1}
 
