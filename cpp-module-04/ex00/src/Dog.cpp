@@ -6,8 +6,51 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 14:04:29 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/27 14:04:30 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/28 15:29:17 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Dog.hpp"
 
+/* ************************************************************************** */
+/* Constructors and Destructors                                               */
+/* ************************************************************************** */
+
+Dog::Dog( void ) : Animal( "Dog" ){
+	DEBUG( "<Dog> default constructor called" );
+}
+
+Dog::~Dog( void ) { DEBUG( "<Dog> destructor called" ); }
+
+Dog::Dog( Dog const& src ) {
+	*this = src;
+	DEBUG( "<Dog> copy constructor called" );
+}
+
+/* ************************************************************************** */
+/* Operator Overload                                                          */
+/* ************************************************************************** */
+
+Dog&	Dog::operator=( Dog const& rhs ) {
+
+	this->_type = rhs._type;
+	return ( *this );
+}
+
+std::ostream&	operator<<( std::ostream& os, Dog const& rhs ) {
+
+	os << "Animal <" << rhs.getType() << ">";
+	return ( os );
+}
+
+/* ************************************************************************** */
+/* Getters and Setters                                                        */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/* Other Functions                                                            */
+/* ************************************************************************** */
+
+void	Dog::makeSound( void ) const {
+	std::cout << "<" << this->_type << ">: " << " wuuuuuuf" << std::endl;
+}
