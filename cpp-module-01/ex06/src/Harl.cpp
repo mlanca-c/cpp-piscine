@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:04:49 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/26 15:01:47 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/29 11:09:30 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,8 @@ void	Harl::filter( std::string level ) {
 
 	int	a;
 
-	for ( a = 0; a < 4; a++ ) {
-		if ( this->_level[a] == level )
-			break ;
+	for ( a = 0; a < 5; a++ ) {
+		if ( this->_level[a] == level ) break ;
 	}
 
 	switch ( a ) {
@@ -58,9 +57,10 @@ void	Harl::filter( std::string level ) {
 
 		case 3:
 			(this->*_f[3])();
+			break ;
 
 		default:
-			break ;
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
 
 }
