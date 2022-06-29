@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 16:49:20 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/26 17:14:35 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/29 12:33:31 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,24 @@ void	ScavTrap::setGateMode( bool gateMode ) { this->_gateMode = gateMode; }
 /* ************************************************************************** */
 /* Other Functions                                                            */
 /* ************************************************************************** */
+
+void	ScavTrap::attack( const std::string& target ) {
+
+	std::cout << "ScavTrap " << this->_name << " ";
+
+	if ( this->_energy == 0 )
+		std::cout << "has no energy left and cannot attack!";
+	else if ( this->_hit == 0 )
+		std::cout << "has no hit points left and cannot attack!";
+	else {
+
+		std::cout << "attacks " << target << ", causing " ;
+		std::cout << this->_attack << " points of damage!";
+		this->_hit--;
+		this->_energy--;
+	}
+	std::cout << std::endl;
+}
 
 void	ScavTrap::guardGate( void ) {
 

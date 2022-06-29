@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 17:21:28 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/26 17:31:30 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/29 12:38:40 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,24 @@ std::ostream&	operator<<( std::ostream& os, FragTrap const& rhs ) {
 /* ************************************************************************** */
 /* Other Functions                                                            */
 /* ************************************************************************** */
+
+void	FragTrap::attack( const std::string& target ) {
+
+	std::cout << "FragTrap " << this->_name << " ";
+
+	if ( this->_energy == 0 )
+		std::cout << "has no energy left and cannot attack!";
+	else if ( this->_hit == 0 )
+		std::cout << "has no hit points left and cannot attack!";
+	else {
+
+		std::cout << "attacks " << target << ", causing " ;
+		std::cout << this->_attack << " points of damage!";
+		this->_hit--;
+		this->_energy--;
+	}
+	std::cout << std::endl;
+}
 
 void	FragTrap::highFiveGuys( void ) {
 

@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 17:17:31 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/26 17:21:29 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/29 12:38:19 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ class FragTrap : public ClapTrap {
 		FragTrap&	operator=( FragTrap const& rhs );
 
 		/* Other Functions */
+		void	attack( const std::string& target );
 		void	highFiveGuys( void );
 
 	private:
