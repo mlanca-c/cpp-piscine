@@ -6,12 +6,10 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:48:16 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/06/26 14:06:34 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/28 15:26:18 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie*	newZombie( std::string name ) {
-	return ( new Zombie( name ));
-}
+Zombie*	newZombie( std::string name ) { return ( new Zombie( name )); }

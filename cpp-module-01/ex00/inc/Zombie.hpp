@@ -6,7 +6,7 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:37:54 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/06/26 13:57:47 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/28 15:16:43 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ class Zombie {
 	public:
 
 		/* Constructors and Destructors */
-		Zombie( std::string name );
 		~Zombie( void );
+
+		Zombie( std::string name );
 
 		/* Getters and Setters */
 		std::string	getName( void ) const;
