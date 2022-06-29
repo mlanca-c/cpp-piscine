@@ -6,7 +6,7 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 15:19:28 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/06/22 15:31:53 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/06/29 11:17:52 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class Fixed {
 
 		/* Private Attributes */
 		int					_raw;
-		static const int	_fBits = 8;
+		static const int	_fBits;
 
 };
 
