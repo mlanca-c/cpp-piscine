@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:00:32 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/26 14:58:15 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/29 10:55:56 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 /* Classes                                                                    */
 /* ************************************************************************** */
 
-typedef void ( *fn )();
-
 class Harl {
 
 	public:
@@ -35,7 +33,6 @@ class Harl {
 		~Harl( void );
 
 		/* Other Functions */
-		void	filter( std::string level );
 		void	complain( std::string level );
 
 	private:

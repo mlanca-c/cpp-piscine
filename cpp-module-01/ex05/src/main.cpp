@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 11:56:42 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/26 15:04:54 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/29 10:55:17 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,10 @@ int	main( int argc, char *argv[] ) {
 
 	Harl	harl = Harl();
 
-	{
-		LOG( "test 1: basic test" );
-		harl.complain( "DEBUG" );
-	}
-
 	if ( argc != 2 ) {
+		harl.complain( "DEBUG" );
 		return ( 0 );
 	}
-	{
-		LOG( "test 2: user testing" );
-		harl.complain( argv[1] );
-	}
+	harl.complain( argv[1] );
 	return (0);
 }
