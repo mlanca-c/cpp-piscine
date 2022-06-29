@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 16:44:28 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/26 17:18:57 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/29 13:04:57 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # include "Debug.hpp"
 
 /* ************************************************************************** */
-/* Class                                                                      */
+/* Classe                                                                     */
 /* ************************************************************************** */
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
 
 	public:
 
@@ -45,9 +45,10 @@ class ScavTrap : public ClapTrap {
 		void	setGateMode( bool gateMode );
 
 		/* Other Functions */
+		void	attack( const std::string& target );
 		void	guardGate( void );
 
-	private:
+	protected:
 
 		/* Private Attributes */
 		bool	_gateMode;

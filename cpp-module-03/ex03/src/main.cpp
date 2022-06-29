@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 15:53:23 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/26 17:28:46 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/29 13:04:23 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main( int argc, char *argv[] ) {
 
@@ -33,10 +34,40 @@ int	main( int argc, char *argv[] ) {
 		std::cout << "c: " << c << std::endl;
 	}
 	{
-		LOG( "test 2: testing inheritance" );
+		LOG( "test 2: testing diamond inheritance" );
 		ClapTrap	clap = ClapTrap( "Clap" );
 		ScavTrap	scav = ScavTrap( "Scav" );
 		FragTrap	frag = FragTrap( "Frag" );
+		DiamondTrap	diamond = DiamondTrap( "diamond" );
+
+		std::cout << diamond << std::endl;
+		diamond.attack( "a rock" );
+		diamond.attack( "another rock" );
+		diamond.attack( "yet another rock" );
+		std::cout << diamond << std::endl;
+		diamond.takeDamage( 42 );
+		std::cout << diamond << std::endl;
+		diamond.beRepaired( 12 );
+		std::cout << diamond << std::endl;
+		diamond.attack( "yet another rock" );
+		diamond.highFiveGuys();
+		diamond.whoAmI();
+		std::cout << diamond << std::endl;
+		std::cout << std::endl;
+
+		std::cout << scav << std::endl;
+		scav.attack( "a rock" );
+		scav.attack( "another rock" );
+		scav.attack( "yet another rock" );
+		std::cout << scav << std::endl;
+		scav.takeDamage( 42 );
+		std::cout << scav << std::endl;
+		scav.beRepaired( 12 );
+		std::cout << scav << std::endl;
+		scav.attack( "yet another rock" );
+		scav.guardGate();
+		std::cout << scav << std::endl;
+		std::cout << std::endl;
 
 		std::cout << frag << std::endl;
 		frag.attack( "a rock" );
@@ -50,6 +81,7 @@ int	main( int argc, char *argv[] ) {
 		frag.attack( "yet another rock" );
 		frag.highFiveGuys();
 		std::cout << frag << std::endl;
+		std::cout << std::endl;
 
 		std::cout << clap << std::endl;
 		clap.attack( "a rock" );

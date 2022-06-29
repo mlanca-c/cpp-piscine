@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 17:32:51 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/26 17:37:22 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/29 13:02:21 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,32 @@
 /* Class                                                                      */
 /* ************************************************************************** */
 
-class DiamondTrap {
+class DiamondTrap : public ScavTrap, public FragTrap {
 
 	public:
 
 		/* Constructors and Destructors */
+		DiamondTrap( void );
+		~DiamondTrap( void );
+		DiamondTrap( DiamondTrap const& src );
+
+		DiamondTrap( std::string name );
 
 		/* Operator Overload */
+		DiamondTrap&	operator=( DiamondTrap const& rhs );
+
+		/* Getters and Setters */
+		std::string	getName( void ) const;
+		void		setName( std::string name );
 
 		/* Other Functions */
+		void	attack( const std::string& target );
+		void	whoAmI( void );
 
 	private:
 
 		/* Private Attributes */
+		std::string	_name;
 
 };
 
@@ -47,6 +60,6 @@ class DiamondTrap {
 /* Other Functions                                                            */
 /* ************************************************************************** */
 
-std::ostream&	operator<<( std::ostream& os, DiamondTrap const& rhs )const;
+std::ostream&	operator<<( std::ostream& os, DiamondTrap const& rhs );
 
 #endif /* DIAMOND_TRAP_HPP */
