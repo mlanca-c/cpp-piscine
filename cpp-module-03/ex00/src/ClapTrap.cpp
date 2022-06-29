@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 15:37:00 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/26 17:30:18 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/06/29 12:24:23 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,31 +86,40 @@ void	ClapTrap::attack( const std::string& target ) {
 	std::cout << "ClapTrap " << this->_name << " ";
 
 	if ( this->_energy == 0 )
-		std::cout << "has no energy left!" << std::endl;
+		std::cout << "has no energy left and cannot attack!";
+	else if ( this->_hit == 0 )
+		std::cout << "has no hit points left and cannot attack!";
 	else {
 
 		std::cout << "attacks " << target << ", causing " ;
-		std::cout << this->_attack << " points of damage!" << std::endl;
+		std::cout << this->_attack << " points of damage!";
+		this->_hit--;
+		this->_energy--;
 	}
-
-	( this->_energy <= 5 ) ? ( this->_energy = 0 ) : ( this->_energy -= 5 );
+	std::cout << std::endl;
 }
 
 void	ClapTrap::takeDamage( unsigned int amount ) {
 
-	( this->_hit <= amount ) ? ( this->_hit = 0 ) : ( this->_hit -= amount );
+	std::cout << "ClapTrap " << this->_name << " ";
 
-	std::cout << "ClapTrap " << this->_name << " took " << amount;
-	std::cout << " points of damage";
-	if ( this->_hit == 0)
-		std::cout << " and was destroyed!";
+	( this->_hit <= amount ) ? ( this->_hit = 0 ) : ( this->_hit -= amount );
+	std::cout << "took " << amount << " points of damage";
+	if ( this->_hit == 0) std::cout << " and was destroyed!";
 	std::cout << std::endl;
 }
 
 void	ClapTrap::beRepaired( unsigned int amount ) {
 
-	this->_hit += amount;
+	std::cout << "ClapTrap " << this->_name << " ";
 
-	std::cout << "ClapTrap " << this->_name << " was repaired " << amount;
-	std::cout << " points!" << std::endl;
+	if ( this->_energy == 0 )
+		std::cout << "has no energy left and cannot be repaired!";
+	else {
+
+		std::cout << "was repaired " << amount << " points!";
+		this->_hit += amount;
+		this->_energy--;
+	}
+	std::cout << std::endl;
 }

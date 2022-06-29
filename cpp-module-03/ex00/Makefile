@@ -137,7 +137,7 @@ _INFO		:= ${YELLOW}[info]:${RESET}
 ifeq (${LANG},C)
 	CC := gcc
 else ifeq (${LANG},C++)
-	CC := clang++
+	CC := c++
 endif
 
 # Compiler flags
