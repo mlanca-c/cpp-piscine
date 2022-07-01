@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= animals
+NAME1	:= character
 
 NAMES	:= ${NAME1}
 
