@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Debug.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/27 14:03:42 by mlancac           #+#    #+#             */
+/*   Updated: 2022/06/30 16:23:58 by mlancac          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef DEBUG_HPP
 # define DEBUG_HPP
 
@@ -18,14 +30,9 @@
 # define ANSI_YELLOW	"\033[33m"
 
 /* Message Templates */
-# if D == 1
 #  define DEBUG(X)	std::cout << ANSI_RED << X << ANSI_RESET << std::endl
 #  define LOG(X)	std::cout << ANSI_GREEN << X << ANSI_RESET << std::endl
-# else
-#  define DEBUG(X)
-#  define LOG(X)	std::cout << X << std::endl
-# endif /* D */
-
-# define ERROR(X)	std::cout << ANSI_RED << "error: " << ANSI_RESET << X << std::endl
+# define ERROR(X)	std::cout << ANSI_RED << "error: " << ANSI_RESET << X \
+	<< std::endl
 
 #endif /* DEBUG_HPP */
