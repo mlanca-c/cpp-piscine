@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:15:57 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/30 17:45:06 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/07/01 13:15:01 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,5 @@ class Animal {
 /* ************************************************************************** */
 
 std::ostream&	operator<<( std::ostream& os, Animal const& rhs );
-
-void	animalHorde( int N );
 
 #endif /* ANIMAL_HPP */
