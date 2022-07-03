@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/01 15:44:05 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/07/01 16:19:15 by mlanca-c         ###   ########.fr       */
+/*   Created: 2022/07/03 18:06:44 by mlancac           #+#    #+#             */
+/*   Updated: 2022/07/03 19:19:03 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,14 @@ class ICharacter {
 		/* Constructors and Destructors */
 		virtual ~ICharacter( void ) {};
 
-		/* Operator Overload */
-		virtual std::string const&	getName( void ) const = 0;
-
 		/* Getters and Setters */
+		virtual std::string const&	getName( void ) const = 0;
 
 		/* Other Functions */
 		virtual void	equip( AMateria* m ) = 0;
 		virtual void	unequip( int idx ) = 0;
-		virtual void	use( int idx, ICharacter &target ) = 0;
+		virtual void	use( int idx, ICharacter& target ) = 0;
 
 };
-
-/* ************************************************************************** */
-/* Other Functions                                                            */
-/* ************************************************************************** */
-
-std::ostream&	operator<<( std::ostream& os, ICharacter const& rhs );
 
 #endif /* I_CHARACTER_HPP */

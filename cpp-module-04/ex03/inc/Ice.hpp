@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/01 15:42:50 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/07/01 15:51:51 by mlanca-c         ###   ########.fr       */
+/*   Created: 2022/07/02 22:10:08 by mlancac           #+#    #+#             */
+/*   Updated: 2022/07/03 19:14:34 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <iostream>
 # include "Debug.hpp"
 # include "AMateria.hpp"
-# include "ICharacter.hpp"
 
 /* ************************************************************************** */
 /* Class                                                                      */
@@ -38,10 +37,8 @@ class Ice : public AMateria {
 		/* Operator Overload */
 		Ice&	operator=( Ice const& rhs );
 
-		/* Getters and Setters */
-
 		/* Other Functions */
-		AMateria*	clone( void );
+		Ice*	clone( void ) const;
 		void		use( ICharacter& target );
 
 	private:
@@ -50,5 +47,11 @@ class Ice : public AMateria {
 	
 
 };
+
+/* ************************************************************************** */
+/* Other Functions                                                            */
+/* ************************************************************************** */
+
+std::ostream&	operator<<( std::ostream& os, Ice const& rhs );
 
 #endif /* ICE_HPP */

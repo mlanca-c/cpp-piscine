@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/01 15:57:58 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/07/01 16:02:35 by mlanca-c         ###   ########.fr       */
+/*   Created: 2022/07/03 18:10:13 by mlancac           #+#    #+#             */
+/*   Updated: 2022/07/03 19:10:46 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@
 /* Class                                                                      */
 /* ************************************************************************** */
 
+class AMateria;
+
 class Character : public ICharacter {
 
 	public:
 
 		/* Constructors and Destructors */
-		Character( void );
 		~Character( void );
 		Character( Character const& src );
 
@@ -42,18 +43,21 @@ class Character : public ICharacter {
 
 		/* Getters and Setters */
 		std::string const&	getName( void ) const;
+		AMateria*			getInventory( int idx ) const;
 
 		/* Other Functions */
 		void	equip( AMateria* m );
 		void	unequip( int idx );
-		void	use( int idx, ICharacter &target );
-
+		void	use( int idx, ICharacter& target );
 
 	private:
 
+		/* Private Constructors and Destructors */
+		Character( void );
+
 		/* Private Attributes */
-		std::string	_name;
-		AMateria	_inventory[4];
+		std::string const	_name;
+		AMateria*			_inventory[4];
 
 };
 

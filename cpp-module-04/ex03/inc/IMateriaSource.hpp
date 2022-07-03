@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/03 17:48:59 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/03 19:16:05 by mlancac          ###   ########.fr       */
+/*   Created: 2022/07/03 19:40:09 by mlancac           #+#    #+#             */
+/*   Updated: 2022/07/03 19:42:33 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURE_HPP
-# define CURE_HPP
+#ifndef I_MATERIA_SOURCE
+# define I_MATERIA_SOURCE
 
 /* ************************************************************************** */
 /* Headers                                                                    */
@@ -25,35 +25,17 @@
 /* Class                                                                      */
 /* ************************************************************************** */
 
-class Cure : public AMateria {
+class IMateriaSource {
 
 	public:
 
 		/* Constructors and Destructors */
-		Cure( void );
-		~Cure( void );
-		Cure( Cure const& src );
-
-		/* Operator Overload */
-		Cure&	operator=( Cure const& rhs );
-
-		/* Getters and Setters */
+		virtual ~IMateriaSource( void ) {}
 
 		/* Other Functions */
-		Cure*	clone( void ) const;
-		void	use( ICharacter& target );
-
-	private:
-
-		/* Private Attributes */
-	
+		virtual void		learnMateria( AMateria* ) = 0;
+		virtual AMateria*	createMateria( std::string const& type ) = 0;
 
 };
 
-/* ************************************************************************** */
-/* Other Functions                                                            */
-/* ************************************************************************** */
-
-std::ostream&	operator<<( std::ostream& os, Cure const& rhs );
-
-#endif /* CURE_HPP */
+#endif /* I_MATERIA_SOURCE */

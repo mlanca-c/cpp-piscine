@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/03 17:48:59 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/03 19:16:05 by mlancac          ###   ########.fr       */
+/*   Created: 2022/07/03 19:42:00 by mlancac           #+#    #+#             */
+/*   Updated: 2022/07/03 19:54:52 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURE_HPP
-# define CURE_HPP
+#ifndef MATERIA_SOURCE_HPP
+# define MATERIA_SOURCE_HPP
 
 /* ************************************************************************** */
 /* Headers                                                                    */
@@ -19,33 +19,35 @@
 
 # include <iostream>
 # include "Debug.hpp"
-# include "AMateria.hpp"
+# include "IMateriaSource.hpp"
 
 /* ************************************************************************** */
 /* Class                                                                      */
 /* ************************************************************************** */
 
-class Cure : public AMateria {
+class MateriaSource : public IMateriaSource {
 
 	public:
 
 		/* Constructors and Destructors */
-		Cure( void );
-		~Cure( void );
-		Cure( Cure const& src );
+		MateriaSource( void );
+		~MateriaSource( void );
+		MateriaSource( MateriaSource const& src );
 
 		/* Operator Overload */
-		Cure&	operator=( Cure const& rhs );
+		MateriaSource&	operator=( MateriaSource const& rhs );
 
 		/* Getters and Setters */
+		AMateria*	getInventory( int idx ) const;
 
 		/* Other Functions */
-		Cure*	clone( void ) const;
-		void	use( ICharacter& target );
+		void		learnMateria( AMateria* m );
+		AMateria*	createMateria( std::string const& type );
 
 	private:
 
 		/* Private Attributes */
+		AMateria*	_inventory[4];
 	
 
 };
@@ -54,6 +56,6 @@ class Cure : public AMateria {
 /* Other Functions                                                            */
 /* ************************************************************************** */
 
-std::ostream&	operator<<( std::ostream& os, Cure const& rhs );
+std::ostream&	operator<<( std::ostream& os, MateriaSource const& rhs );
 
-#endif /* CURE_HPP */
+#endif /* MATERIA_SOURCE_HPP */

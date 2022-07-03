@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/01 15:45:06 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/07/01 16:12:26 by mlanca-c         ###   ########.fr       */
+/*   Created: 2022/07/01 15:47:57 by mlancac           #+#    #+#             */
+/*   Updated: 2022/07/03 20:50:22 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Ice::Ice( void ) : AMateria( "ice" ) {
 
 Ice::~Ice( void ) { DEBUG( "<Ice> destructor called" ); }
 
-Ice::Ice( Ice const& src ) AMateria( src ) {
+Ice::Ice( Ice const& src ) : AMateria( src._type ) {
 	DEBUG( "<Ice> copy constructor called" );
 }
 
@@ -31,25 +31,25 @@ Ice::Ice( Ice const& src ) AMateria( src ) {
 /* ************************************************************************** */
 
 Ice&	Ice::operator=( Ice const& rhs ) {
-	
+
 	const_cast<std::string&>( this->_type ) = rhs._type;
 	return ( *this );
 }
 
-/* ************************************************************************** */
-/* Getters and Setters                                                        */
-/* ************************************************************************** */
+std::ostream&	operator<<( std::ostream& os, Ice const& rhs ) {
+
+	os << "<AMateria> " << rhs.getType();
+	return ( os );
+}
 
 /* ************************************************************************** */
 /* Other Functions                                                            */
 /* ************************************************************************** */
 
-AMateria*	AMateria::clone( void ) {
-	return ( new Ice( *this ) );
-}
+Ice*	Ice::clone( void ) const { return ( new Ice( *this )); }
 
-void	AMateria::use( ICharacter& target ) {
+void	Ice::use( ICharacter& target ) {
 
-	std::cout << "* shoots an ice bolt at " << target.getName() << "*";
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *";
 	std::cout << std::endl;
 }

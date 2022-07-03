@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/01 15:32:30 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/07/01 16:22:12 by mlanca-c         ###   ########.fr       */
+/*   Created: 2022/07/02 22:03:53 by mlancac           #+#    #+#             */
+/*   Updated: 2022/07/03 18:41:45 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@
 /* Class                                                                      */
 /* ************************************************************************** */
 
+class ICharacter;
+
 class AMateria {
 
 	public:
 
 		/* Constructors and Destructors */
-		// AMateria( void );
-		~AMateria( void );
+		virtual ~AMateria( void );
 		AMateria( AMateria const& src );
 
 		AMateria( std::string const& type );
@@ -43,14 +44,18 @@ class AMateria {
 		std::string const&	getType( void ) const;
 
 		/* Other Functions */
-		virtual AMateria*	clone( void ) = 0; // Pure abstract class
+		virtual AMateria*	clone( void ) const = 0;
 		virtual void		use( ICharacter& target );
 
 	protected:
 
 		/* Private Attributes */
-		std::string const&	_type;
+		std::string const	_type;
 	
+	private:
+
+		/* Private Constructor */
+		AMateria( void );
 
 };
 
