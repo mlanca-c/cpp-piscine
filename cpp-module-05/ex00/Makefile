@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= bin
+NAME1	:= bureaucrat
 
 NAMES	:= ${NAME1}
 
