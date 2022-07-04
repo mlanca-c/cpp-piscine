@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 10:31:49 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 11:17:00 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/07/04 11:50:20 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ class Bureaucrat {
 		/* Exceptions */
 		class GradeTooHighException : public std::exception {
  			public:
-				const char* what( void ) const throw();
+				char const* what( void ) const throw();
 		};
 
 		class GradeTooLowException : public std::exception {
 			public:
-				const char*	what( void ) const throw();
+				char const* what( void ) const throw();
 		};
 
 	protected:

@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 10:38:31 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 11:41:31 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/07/04 11:51:25 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,10 @@ void	Bureaucrat::decrementGrade( void ) throw( std::exception ) {
 /* Exceptions                                                                 */
 /* ************************************************************************** */
 
-const char*	Bureaucrat::GradeTooHighException::what( void ) const throw() {
-	return ( "<Exception>: grade too high" );
+char const*	Bureaucrat::GradeTooHighException::what( void ) const throw() {
+	return ( "Bureaucrat: Exception: grade too high" );
 }
 
-const char*	Bureaucrat::GradeTooLowException::what( void ) const throw() {
-	return ( "<Exception>: grade too low" );
+char const*	Bureaucrat::GradeTooLowException::what( void ) const throw() {
+	return ( "Bureaucrat: Exception: grade too low" );
 }

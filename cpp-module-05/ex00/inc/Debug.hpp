@@ -26,9 +26,7 @@
 #  define LOG(X)	std::cout << X << std::endl
 # endif /* D */
 
-# define ERROR(X)		std::cout << ANSI_RED << "error: " << ANSI_RESET << X\
+# define ERROR(X)	std::cout << ANSI_RED << "error: " << ANSI_RESET << X\
 	<< std::endl
-# define EXCEPTION(X)	std::cout << ANSI_YELLOW << "<Exception>: " << X\
-	<< ANSI_RESET << std::endl
 
 #endif /* DEBUG_HPP */
