@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:51:00 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 15:17:23 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/07/04 15:34:16 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,30 @@ class Intern {
 				std::string const& target ) const throw( std::exception );
 
 		/* Exceptions */
+
 		class NoSuchFormException : public std::exception {
+			public:
+				char const*	what( void ) const throw();
+		};
+
+		class WrongFormException : public std::exception {
 			public:
 				char const*	what( void ) const throw();
 		};
 
 	private:
 
-		/* Private Attributes */
-		Form*( Intern::*_formTemplate[3] )( std::string const& ) const;
-		std::string	_form[3];
-
+		// /* Private Attributes */
+		// Form*( Intern::*_formTemplate[3] )( std::string const& ) const;
+		// std::string	_form[3];
+		//
 		/* Private Functions */
-		Form*	cloneShrubberyCreationForm( std::string const& target ) const;
-		Form*	cloneRobotomyRequestForm( std::string const& target ) const;
-		Form*	clonePresidentialPardonForm( std::string const& target ) const;
+		Form*	cloneShrubberyCreationForm( std::string const& name,
+				std::string const& target ) const;
+		Form*	cloneRobotomyRequestForm( std::string const& name,
+				std::string const& target ) const;
+		Form*	clonePresidentialPardonForm( std::string const& name,
+				std::string const& target ) const;
 
 };
 
