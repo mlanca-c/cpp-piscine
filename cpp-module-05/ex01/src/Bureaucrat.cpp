@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 10:38:31 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 13:14:41 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/07/04 13:21:48 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,18 @@ void	Bureaucrat::decrementGrade( void ) throw( std::exception ) {
 	this->_grade++;
 }
 
-void	Bureaucrat::signForm( Form& f ) {
+void	Bureaucrat::signForm( Form& form ) {
 
-	try { f.beSigned( *this ); }
+	try { form.beSigned( *this ); }
 	catch ( std::exception& e ) {
 
 		std::cout << "<Bureaucrat> " << this->_name << " couldn't sign ";
-		std::cout << f.getName() << " because " << e.what() << std::endl;
+		std::cout << form.getName() << " because " << e.what() << std::endl;
 
 		return ;
 	}
 
-	std::cout << "<Bureaucrat> " << this->_name << " signed " << f.getName();
+	std::cout << "<Bureaucrat> " << this->_name << " signed " << form.getName();
 	std::cout << std::endl;
 }
 /* ************************************************************************** */

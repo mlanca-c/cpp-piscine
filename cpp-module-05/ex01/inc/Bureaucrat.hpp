@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 10:31:49 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 12:40:03 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/07/04 13:21:53 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ class Bureaucrat {
 		/* Other Functions */
 		void	incrementGrade( void ) throw( std::exception ) ;
 		void	decrementGrade( void ) throw( std::exception ) ;
-		void	signForm( Form& f );
+		void	signForm( Form& form );
 
 		/* Exceptions */
 		class GradeTooHighException : public std::exception {
