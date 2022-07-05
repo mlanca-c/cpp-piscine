@@ -5,33 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 12:39:38 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/05 13:46:25 by mlancac          ###   ########.fr       */
+/*   Created: 2022/07/05 19:02:11 by mlancac           #+#    #+#             */
+/*   Updated: 2022/07/05 19:49:58 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <string>
 #include "Debug.hpp"
-#include "LiteralCast.hpp"
+#include "Literal.hpp"
 
 int	main( int argc, char *argv[] ) {
 
 	( void )argc;
 	( void )argv;
 
-	std::string	l;
+	std::string	str;
 
-	if ( argc == 2 )
-		l = std::string( argv[1] );
-	else
-		l = std::string( "42" );
+	if ( argc != 2 ) { str = std::string( "4.2f" ); }
+	else { str = std::string( argv[1] ); }
 
 	{
-		LOG( "test 1: testing LiteralCast Class" );
-		LiteralCast	literal = LiteralCast( l );
-		std::cout << literal << " type: " << literal.getType() << std::endl;
-		literal.printCast();
+		LOG( "test 1: testing cast conversion of scalar types" );
+		Literal*	literal = new Literal( str );
+
+		std::cout << *literal << std::endl;
+		literal->printValues();
+
+		delete literal;
 	}
+
 	return ( 0 );
 }

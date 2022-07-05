@@ -1,98 +1,85 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   LiteralCast.hpp                                    :+:      :+:    :+:   */
+/*   Literal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 12:50:23 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/05 16:14:58 by mlancac          ###   ########.fr       */
+/*   Created: 2022/07/05 19:12:05 by mlancac           #+#    #+#             */
+/*   Updated: 2022/07/05 20:41:03 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LITERAL_CAST_HPP
-# define LITERAL_CAST_HPP
+#ifndef LITERAL_HPP
+# define LITERAL_HPP
 
 /* ************************************************************************** */
 /* Headers                                                                    */
 /* ************************************************************************** */
 
 # include <iostream>
-# include <exception>
-# include <sstream>
+# include <string>
 # include <limits>
-# include <iostream>
-# include <iomanip>
+# include <sstream>
 # include "Debug.hpp"
 
 /* ************************************************************************** */
-/* Class                                                                      */
+/* Other Strucs or Enums                                                      */
 /* ************************************************************************** */
 
-typedef enum	e_type {
-	None,
+typedef enum e_types {
+	Invalid,
 	Char,
 	Int,
 	Float,
 	Double,
 	Inf,
-	// Inff,
+	Inff,
 	NInf,
-	// NInff,
+	NInff,
 	Nan,
-	// Nanf,
+	Nanf,
 }	t_type;
 
-// 1: detect the type of the literal
-// 2: convert from str to its type
-// 3: convert explicitly to three other data types
-// 	( if conversion doesnt make sense or overfloes impossible )
+/* ************************************************************************** */
+/* Class                                                                      */
+/* ************************************************************************** */
 
-class LiteralCast {
+class Literal {
 
 	public:
 
 		/* Constructors and Destructors */
-		~LiteralCast( void );
-		LiteralCast( LiteralCast const& src );
+		~Literal( void );
+		Literal( Literal const& src );
 
-		LiteralCast( std::string const& literal );
+		Literal( std::string const& value );
 
 		/* Operator Overload */
-		LiteralCast&	operator=( LiteralCast const& rhs );
+		Literal&	operator=( Literal const& rhs );
 
 		/* Getters and Setters */
-		std::string	getLiteral( void ) const;
-		t_type		getType( void ) const;
+		std::string const&	getValue( void ) const;
+		t_type				getType( void ) const;
 
 		/* Other Functions */
-		void	printCast( void ) const;
+		void	printValues( void ) const;
 
 	private:
 
 		/* Private Constructors and Destructors */
-		LiteralCast( void );
+		Literal( void );
 
-		/* Other Functions */
-		void	printLiteral( char c ) const;
-		void	printLiteral( int i ) const;
-		void	printLiteral( float f ) const;
-		void	printLiteral( double d ) const;
-
-		void	printChar( char c ) const;
-		void	printInt( int i ) const;
-		void	printFloat( float f ) const;
-		void	printDouble( double d ) const;
-
-		t_type	generateType( void );
-		void	printInt( void ) const;
-		void	printChar( void ) const;
-		void	printFloat( void ) const;
-		void	printDouble( void ) const;
+		/* Other Private Functions */
+		void	printValues( char c ) const;
+		void	printValues( int i ) const;
+		void	printValues( float f ) const;
+		void	printValues( double d ) const;
 
 		/* Private Attributes */
-		std::string const	_literal;
-		t_type				_type;
+		std::string const	_value;
+		t_type				_type; 
+	
 
 };
 
@@ -100,6 +87,6 @@ class LiteralCast {
 /* Other Functions                                                            */
 /* ************************************************************************** */
 
-std::ostream&	operator<<( std::ostream& os, LiteralCast const& rhs );
+std::ostream&	operator<<( std::ostream& os, Literal const& rhs );
 
-#endif /* LITERAL_CAST_HPP */
+#endif /* LITERAL_HPP */
