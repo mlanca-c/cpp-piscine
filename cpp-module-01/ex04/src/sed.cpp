@@ -54,7 +54,7 @@ static std::string	sedLine( std::string line, std::string s1, std::string s2 ) {
 
 	i = 0;
 	while ( 1 ) {
-		if ( (i = line.find(s1, i)) == std::string::npos )
+		if (( i = line.find( s1, i )) == std::string::npos )
 			break ;
 		line = line.erase( i, s1.length() );
 		line = line.insert( i, s2 );
@@ -70,10 +70,10 @@ static std::string	argvIsForLosers( std::string str ) {
 
 	i = 0;
 	while ( 1 ) {
-		if ( (i = str.find("\\", i)) == std::string::npos )
+		if ( (i = str.find( "\\", i )) == std::string::npos )
 			break ;
 
-		c = str.at(i + 1);
+		c = str.at( i + 1 );
 		str = str.erase( i, 2 );
 		if ( c == 'a' )
 			str = str.insert( i, "\a" );

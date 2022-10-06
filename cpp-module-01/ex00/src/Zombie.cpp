@@ -16,9 +16,7 @@
 /* Constructors and Destructors                                               */
 /* ************************************************************************** */
 
-Zombie::Zombie( void ) : _name( "Zombie" ) {
-	DEBUG( "<" << this->getName() << "> default constructor called" );
-}
+Zombie::Zombie( void ) { DEBUG( "<Zombie> default constructor called" ); }
 
 Zombie::~Zombie( void ) {
 	DEBUG( "<" << this->getName() << "> destructor called" );

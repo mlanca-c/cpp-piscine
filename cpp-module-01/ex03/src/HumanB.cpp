@@ -16,16 +16,16 @@
 /* Constructors and Destructors                                               */
 /* ************************************************************************** */
 
-HumanB::HumanB( void ) {
-	DEBUG("<HumanB> default constructor called");
+HumanB::HumanB( void ) : _name( "HumanB" ) {
+	DEBUG( "HumanB <" << this->getName() << "> default constructor called" );
 }
 
 HumanB::~HumanB( void ) {
-	DEBUG("<HumanB> destructor called");
+	DEBUG( "HumanB <" << this->getName() << "> destructor called" );
 }
 
 HumanB::HumanB( std::string name ) : _name( name ) {
-	DEBUG("<" << this->getName() << "> constructor called");
+	DEBUG( "HumanB <" << this->getName() << "> constructor called" );
 }
 
 /* ************************************************************************** */
@@ -45,6 +45,6 @@ void	HumanB::setWeapon( Weapon& weapon ) { this->_weapon = &weapon; }
 /* ************************************************************************** */
 
 void	HumanB::attack( void ) const {
-	std::cout << this->getName() << " attacks with their ";
-	std::cout << this->getWeapon()->getType() << std::endl;
+	std::cout << this->getName() << " attacks with their "
+			  << this->getWeapon()->getType() << std::endl;
 }

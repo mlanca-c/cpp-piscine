@@ -17,16 +17,16 @@
 /* ************************************************************************** */
 
 HumanA::~HumanA( void ) {
-	DEBUG("<HumanA> destructor called");
+	DEBUG( "HumanA <" << this->getName() << "> destructor called" );
 }
 
-HumanA::HumanA( Weapon& weapon ): _weapon( weapon ) {
-	DEBUG("<HumanA> constructor called");
+HumanA::HumanA( Weapon& weapon ): _name( "HumanA" ), _weapon( weapon ) {
+	DEBUG( "HumanA <" << this->getName() << "> constructor called" );
 }
 
 HumanA::HumanA( std::string name, Weapon& weapon ):
 	_name( name ), _weapon( weapon ) {
-	DEBUG("<" << this->getName() << "> constructor called");
+	DEBUG( "HumanA <" << this->getName() << "> constructor called" );
 }
 
 /* ************************************************************************** */
@@ -44,6 +44,6 @@ void	HumanA::setName( std::string name ) { this->_name = name; }
 /* ************************************************************************** */
 
 void	HumanA::attack( void ) const {
-	std::cout << this->getName() << " attacks with their ";
-	std::cout << this->getWeapon().getType() << std::endl;
+	std::cout << this->getName() << " attacks with their "
+			  << this->getWeapon().getType() << std::endl;
 }

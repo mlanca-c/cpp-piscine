@@ -20,7 +20,7 @@ int	main( int argc, char *argv[] ) {
 	(void)argc;
 	(void)argv;
 	{
-		LOG("test 1: testing weapon class");
+		LOG( "test 1: testing weapon class" );
 		Weapon		club = Weapon( "crude spiked club" );
 		std::string	str;
 
@@ -35,7 +35,7 @@ int	main( int argc, char *argv[] ) {
 		std::cout << "<Weapon>: " << club.getType() << std::endl;
 	}
 	{
-		LOG("test 2: testing HumanA");
+		LOG( "test 2: testing HumanA" );
 		Weapon	club = Weapon( "crude spiked club" );
 		HumanA	bob("Bob", club);
 
@@ -44,7 +44,7 @@ int	main( int argc, char *argv[] ) {
 		bob.attack();
 	}
 	{
-		LOG("test 3: testing HumanB");
+		LOG( "test 3: testing HumanB" );
 		Weapon	club = Weapon( "crude spiked club" );
 		HumanB	jim( "Jim" );
 
