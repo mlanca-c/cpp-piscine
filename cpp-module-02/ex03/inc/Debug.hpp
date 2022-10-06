@@ -19,7 +19,8 @@
 
 /* Message Templates */
 # if D == 1
-#  define DEBUG(X)	std::cout << ANSI_RED << X << ANSI_RESET << std::endl
+#  define DEBUG(X)
+// #  define DEBUG(X)	std::cout << ANSI_RED << X << ANSI_RESET << std::endl
 #  define LOG(X)	std::cout << ANSI_GREEN << X << ANSI_RESET << std::endl
 # else
 #  define DEBUG(X)

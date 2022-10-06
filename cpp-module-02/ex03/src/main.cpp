@@ -22,6 +22,7 @@ int	main( int argc, char *argv[] ) {
 	(void)argc;
 	(void)argv;
 
+	LOG( "Running a bunch of tests" );
 	Point const a( 0.0f, 0.0f );
 	Point const b( 10.0f, 0.0f );
 	Point const c( 0.0f, 10.0f );
