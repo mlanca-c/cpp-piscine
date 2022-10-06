@@ -44,7 +44,7 @@ class Harl {
 		void	error();
 
 		/* Private Attributes */
-		void (Harl::*_f[4])( void );
+		void ( Harl::*_f[4] )( void );
 		std::string	_level[4];
 
 };
