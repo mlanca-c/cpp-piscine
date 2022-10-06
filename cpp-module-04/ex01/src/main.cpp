@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:22:04 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/01 13:11:42 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 09:27:07 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,39 @@ int	main( int argc, char *argv[] ) {
 		std::cout << "c: " << c << std::endl;
 	}
 	{
-		LOG( "test 2: testing Brain Class in Dog and Cat Classes" );
-		Dog const	dog = Dog();
-		Cat const	cat = Cat();
+		LOG( "test 2: testing Brain Class in Dog Class" );
+		Dog a;
+		Dog	b( a );
+		Dog c;
 
-		cat.getBrain()->setIdea( "I have a thousand ideas" );
-		dog.getBrain()->setIdea( "I have zero ideas" );
-		std::cout << dog << std::endl;
-		std::cout << cat << std::endl;
+		b.getBrain()->setIdea( "woof" );
+		b.getBrain()->setIdea( "eat" );
+		a.getBrain()->setIdea( "play" );
+
+		c = b;
+
+		std::cout << a << std::endl;
+		std::cout << b << std::endl;
+		std::cout << c << std::endl;
 	}
 	{
-		LOG( "test 3: testing with the main from the subject" );
+		LOG( "test 3: testing Brain Class in Cat Class" );
+		Cat a;
+		Cat	b( a );
+		Cat c;
+
+		b.getBrain()->setIdea( "meow" );
+		b.getBrain()->setIdea( "eat" );
+		a.getBrain()->setIdea( "sleep" );
+
+		c = b;
+
+		std::cout << a << std::endl;
+		std::cout << b << std::endl;
+		std::cout << c << std::endl;
+	}
+	{
+		LOG( "test 4: testing with the main from the subject" );
 		Animal const*	dog = new Dog();
 		Animal const*	cat = new Cat();
 
@@ -59,8 +81,8 @@ int	main( int argc, char *argv[] ) {
 		delete cat;
 	}
 	{
-		LOG( "test 4: testing with an array of Animals" );
-		int		nu = 21;
+		LOG( "test 5: testing with an array of Animals" );
+		int		nu = 3;
 		Animal*	animal[nu];
 
 		for ( int i = 0; i < nu; i++ ) {

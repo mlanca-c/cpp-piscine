@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:30:54 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/30 16:36:48 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 08:28:23 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ Dog&	Dog::operator=( Dog const& rhs ) {
 /* ************************************************************************** */
 
 void	Dog::makeSound( void ) const {
-	std::cout << "<" << this->_type << ">: * wuuuuuuuuuuuf *" << std::endl;
+	std::cout << "<" << this->_type << ">: * woof *" << std::endl;
 }

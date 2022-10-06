@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:55:58 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/30 17:08:35 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 09:07:06 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ class Brain {
 		int			getNuIdeas( void ) const;
 
 		/* Other Functions */
+		Brain*	clone( void ) const;
 
 	private:
 

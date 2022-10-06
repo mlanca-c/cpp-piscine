@@ -20,12 +20,13 @@
 /* Message Templates */
 # if D == 1
 #  define DEBUG(X)	std::cout << ANSI_RED << X << ANSI_RESET << std::endl
-#  define LOG(X)	std::cout << ANSI_GREEN << X << ANSI_RESET << std::endl
+#  define MORE(X)   std::cout << X << std::endl;
 # else
 #  define DEBUG(X)
-#  define LOG(X)	std::cout << X << std::endl
+#  define MORE(X)
 # endif /* D */
 
+#  define LOG(X)	std::cout << ANSI_GREEN << X << ANSI_RESET << std::endl
 # define ERROR(X)	std::cout << ANSI_RED << "error: " << ANSI_RESET << X << std::endl
 
 #endif /* DEBUG_HPP */

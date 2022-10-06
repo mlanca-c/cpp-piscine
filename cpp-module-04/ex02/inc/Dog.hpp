@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:30:19 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/01 13:16:08 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 09:34:58 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,7 @@ class Dog : public AAnimal {
 		/* Other Functions */
 		void	makeSound( void ) const;
 
-		/* Getters and Setters */
-		Brain*	getBrain( void ) const;
-		// void	setBrain( Brain* brain );
-
 	private:
-
-		/* Private Attributes */
-		Brain*	_brain;
 
 };
 

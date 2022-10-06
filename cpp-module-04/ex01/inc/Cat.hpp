@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:24:48 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/30 17:23:30 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 09:16:37 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,16 @@ class Cat : public Animal {
 		/* Operator Overload */
 		Cat&	operator=( Cat const& rhs );
 
+		/* Getters and Setters */
+		Brain*		getBrain( void ) const;
+		
 		/* Other Functions */
 		void	makeSound( void ) const;
-
-		/* Getters and Setters */
-		Brain*	getBrain( void ) const;
-		// void	setBrain( Brain* brain );
 
 	private:
 
 		/* Private Attributes */
-		Brain*	_brain;
+		Brain*		_brain;
 
 };
 

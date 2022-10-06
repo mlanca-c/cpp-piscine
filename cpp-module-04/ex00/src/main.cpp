@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:22:04 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/30 16:50:28 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 08:41:47 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,31 @@ int	main( int argc, char *argv[] ) {
 		std::cout << "c: " << c << std::endl;
 	}
 	{
-		LOG( "test 4: testing with the main from the subject" );
+		LOG( "test 4: testing WrongAnimal class" );
+		WrongAnimal	a;
+		WrongAnimal	b( a );
+		WrongAnimal	c;
+
+		b = c;
+
+		std::cout << "a: " << a << std::endl;
+		std::cout << "b: " << b << std::endl;
+		std::cout << "c: " << c << std::endl;
+	}
+	{
+		LOG( "test 5: testing WrongCat class" );
+		WrongCat	a;
+		WrongCat	b( a );
+		WrongCat	c;
+
+		b = c;
+
+		std::cout << "a: " << a << std::endl;
+		std::cout << "b: " << b << std::endl;
+		std::cout << "c: " << c << std::endl;
+	}
+	{
+		LOG( "test 6: testing with the main from the subject" );
 		Animal const*	meta = new Animal();
 		Animal const*	dog = new Dog();
 		Animal const*	cat = new Cat();
@@ -76,7 +100,7 @@ int	main( int argc, char *argv[] ) {
 		delete cat;
 	}
 	{
-		LOG( "test 5: testing with wrong animal class" );
+		LOG( "test 7: testing with wrong animal class" );
 		WrongAnimal const*	meta = new WrongAnimal();
 		WrongAnimal const*	cat = new WrongCat();
 
@@ -88,7 +112,7 @@ int	main( int argc, char *argv[] ) {
 		delete cat;
 	}
 	{
-		LOG( "test 6: testing without pointers to see the diference" );
+		LOG( "test 8: testing without pointers to see the diference" );
 		Animal	animal = Animal();
 		Dog		dog = Dog();
 		Cat		cat = Cat();
@@ -96,7 +120,9 @@ int	main( int argc, char *argv[] ) {
 		animal.makeSound();
 		dog.makeSound();
 		cat.makeSound();
-
+	}
+	{
+		LOG( "test 9: testing without pointers to see the diference (WrongClass)" );
 		WrongCat	wrongCat = WrongCat();
 		WrongAnimal	wrongAnimal = WrongAnimal();
 

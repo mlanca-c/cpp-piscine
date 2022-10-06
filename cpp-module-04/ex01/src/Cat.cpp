@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:25:48 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/30 17:31:16 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 09:18:49 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 /* Constructors and Destructors                                               */
 /* ************************************************************************** */
 
-Cat::Cat( void ) : Animal( "Cat" ) {
-
+Cat::Cat( void ) : Animal( "Cat" ), _brain( new Brain() ) {
 	DEBUG( "<Cat> default constructor called" );
-	this->_brain = new Brain();
 }
 
 Cat::~Cat( void ) {
@@ -28,7 +26,7 @@ Cat::~Cat( void ) {
 	DEBUG( "<Cat> destructor called" );
 }
 
-Cat::Cat( Cat const& src ) : Animal( src ) {
+Cat::Cat( Cat const& src ) : Animal( src ), _brain( new Brain() ) {
 
 	*this = src;
 	DEBUG( "<Cat> copy constructor called" );
@@ -41,12 +39,14 @@ Cat::Cat( Cat const& src ) : Animal( src ) {
 Cat&	Cat::operator=( Cat const& rhs ) {
 	
 	Animal::operator=( rhs );
+	if ( this->_brain ) delete this->_brain;
+	this->_brain = rhs._brain->clone();
 	return ( *this );
 }
 
 std::ostream&	operator<<( std::ostream& os, Cat const& rhs ) {
 
-	os << "<Cat> " << *( rhs.getBrain() );
+	os << rhs.getType() << " " << *( rhs.getBrain() );
 	return ( os );
 }
 
@@ -61,5 +61,5 @@ Brain*	Cat::getBrain( void ) const { return ( this->_brain ); }
 /* ************************************************************************** */
 
 void	Cat::makeSound( void ) const {
-	std::cout << "<" << this->_type << ">: * miaaaaaaaaaau *" << std::endl;
+	std::cout << "<" << this->_type << ">: * meow *" << std::endl;
 }

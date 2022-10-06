@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:59:09 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/30 17:29:48 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 09:38:29 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ Brain::Brain( Brain const& src ) {
 
 Brain&	Brain::operator=( Brain const& rhs ) {
 
-	for ( int i = 0; i < 100; i++ )
+	LOG(rhs);
+	this->_nuIdeas = rhs._nuIdeas;
+	for ( int i = 0; i < this->_nuIdeas; i++ )
 		this->_ideas[i] = rhs._ideas[i];
 	return ( *this );
 }
@@ -42,9 +44,9 @@ Brain&	Brain::operator=( Brain const& rhs ) {
 std::ostream&	operator<<( std::ostream& os, Brain const& rhs ) {
 
 	os << "<Brain>: ";
-	for ( int i = 0; i < 100; i++ ) {
+	for ( int i = 0; i < rhs.getNuIdeas(); i++ ) {
 		os << rhs.getIdea( i );
-		( i != 100 ? ( os << ", " ) : ( os << "." ));
+		( i != rhs.getNuIdeas() - 1 ? ( os << ", " ) : ( os << "." ));
 	}
 
 	return ( os );
@@ -72,3 +74,4 @@ int	Brain::getNuIdeas( void ) const { return ( this->_nuIdeas ); }
 /* Other Functions                                                            */
 /* ************************************************************************** */
 
+Brain*	Brain::clone( void ) const { return ( new Brain( *this )); }

@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:25:48 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/30 16:41:07 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 08:40:14 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ WrongCat::WrongCat( void ) : WrongAnimal( "WrongCat" ) {
 
 WrongCat::~WrongCat( void ) { DEBUG( "<WrongCat> destructor called" ); }
 
-WrongCat::WrongCat( WrongCat const& src ) {
+WrongCat::WrongCat( WrongCat const& src ) : WrongAnimal( src ) {
 
 	*this = src;
 	DEBUG( "<WrongCat> copy constructor called" );
@@ -43,5 +43,5 @@ WrongCat&	WrongCat::operator=( WrongCat const& rhs ) {
 /* ************************************************************************** */
 
 void	WrongCat::makeSound( void ) const {
-	std::cout << "<" << this->_type << ">: * miaaaaaaaaaau *" << std::endl;
+	std::cout << "<" << this->_type << ">: * meow *" << std::endl;
 }

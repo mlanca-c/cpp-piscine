@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:47:57 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/03 20:50:22 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 09:56:20 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ Ice::Ice( void ) : AMateria( "ice" ) {
 
 Ice::~Ice( void ) { DEBUG( "<Ice> destructor called" ); }
 
-Ice::Ice( Ice const& src ) : AMateria( src._type ) {
+Ice::Ice( Ice const& src ) {
+
+	*this = src;
 	DEBUG( "<Ice> copy constructor called" );
 }
 
@@ -32,13 +34,13 @@ Ice::Ice( Ice const& src ) : AMateria( src._type ) {
 
 Ice&	Ice::operator=( Ice const& rhs ) {
 
-	const_cast<std::string&>( this->_type ) = rhs._type;
+	AMateria::operator=( rhs );
 	return ( *this );
 }
 
 std::ostream&	operator<<( std::ostream& os, Ice const& rhs ) {
 
-	os << "<AMateria> " << rhs.getType();
+	os << "Materia <" << rhs.getType() << ">";
 	return ( os );
 }
 
@@ -50,6 +52,6 @@ Ice*	Ice::clone( void ) const { return ( new Ice( *this )); }
 
 void	Ice::use( ICharacter& target ) {
 
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *";
-	std::cout << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *"
+			  << std::endl;
 }

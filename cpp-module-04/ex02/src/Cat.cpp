@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:25:48 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/01 13:17:05 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 09:35:21 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,12 @@
 /* ************************************************************************** */
 
 Cat::Cat( void ) : AAnimal( "Cat" ) {
-
-	this->_brain = new Brain();
 	DEBUG( "<Cat> default constructor called" );
 }
 
-Cat::~Cat( void ) {
+Cat::~Cat( void ) { DEBUG( "<Cat> destructor called" ); }
 
-	delete this->_brain;
-	DEBUG( "<Cat> destructor called" );
-}
-
-Cat::Cat( Cat const& src ) {
+Cat::Cat( Cat const& src ) : AAnimal( src ) {
 
 	*this = src;
 	DEBUG( "<Cat> copy constructor called" );
@@ -51,15 +45,9 @@ std::ostream&	operator<<( std::ostream& os, Cat const& rhs ) {
 }
 
 /* ************************************************************************** */
-/* Getters and Setters                                                        */
-/* ************************************************************************** */
-
-Brain*	Cat::getBrain( void ) const { return ( this->_brain ); }
-
-/* ************************************************************************** */
 /* Other Functions                                                            */
 /* ************************************************************************** */
 
 void	Cat::makeSound( void ) const {
-	std::cout << "<" << this->_type << ">: * miaaaaaaaaaau *" << std::endl;
+	std::cout << "<" << this->_type << ">: * meow *" << std::endl;
 }

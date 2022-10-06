@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 18:10:13 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/03 19:10:46 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 10:56:56 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ class Character : public ICharacter {
 		/* Getters and Setters */
 		std::string const&	getName( void ) const;
 		AMateria*			getInventory( int idx ) const;
+		int					getAmount( void ) const;
 
 		/* Other Functions */
 		void	equip( AMateria* m );
@@ -58,6 +59,7 @@ class Character : public ICharacter {
 		/* Private Attributes */
 		std::string const	_name;
 		AMateria*			_inventory[4];
+		int					_amount;
 
 };
 

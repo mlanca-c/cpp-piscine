@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:17:56 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/30 16:36:32 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 08:26:07 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /* ************************************************************************** */
 
 Animal::Animal( void ) : _type( "Animal" ) {
-	DEBUG( "Animal <" << this->_type << "> constructor called" );
+	DEBUG( "Animal <" << this->_type << "> default constructor called" );
 }
 
 Animal::~Animal( void ) {
@@ -46,7 +46,7 @@ Animal&	Animal::operator=( Animal const& rhs ) {
 
 std::ostream&	operator<<( std::ostream& os, Animal const& rhs ) {
 
-	std::cout << "<Animal> " << rhs.getType();
+	std::cout << "Animal <" << rhs.getType() << ">";
 	return ( os );
 }
 
@@ -64,7 +64,6 @@ void	Animal::setType( std::string type ) { this->_type = type; }
 
 void	Animal::makeSound( void ) const {
 
-	std::cout << "<" << this->_type << ">: * makes a weird animal sound *";
-	std::cout << std::endl;
+	std::cout << "<" << this->_type << ">: * makes a weird animal sound *"
+			  << std::endl;
 }
-

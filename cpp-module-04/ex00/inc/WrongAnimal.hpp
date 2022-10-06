@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:37:40 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/30 16:38:25 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 08:33:38 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,21 @@ class WrongAnimal {
 
 		/* Getters and Setters */
 		std::string	getType( void ) const;
-		void		setType( std::string type );
 
 		/* Other Functions */
 		void	makeSound( void ) const;
 
 	protected:
 
+		/* Private Constructors and Destructors */
 		WrongAnimal( std::string type );
+
+		/* Private Getters and Setters */
+		void	setType( std::string type );
 
 		/* Private Attributes */
 		std::string	_type;
 	
-
 };
 
 /* ************************************************************************** */

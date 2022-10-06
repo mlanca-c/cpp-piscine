@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:15:57 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/01 13:15:01 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 09:19:15 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # include <iostream>
 # include "Debug.hpp"
+# include "Brain.hpp"
 
 /* ************************************************************************** */
 /* Class                                                                      */
@@ -38,18 +39,21 @@ class Animal {
 
 		/* Getters and Setters */
 		std::string	getType( void ) const;
-		void		setType( std::string type );
+		Brain*		getBrain( void ) const;
 
 		/* Other Functions */
 		virtual void	makeSound( void ) const;
 
 	protected:
 
+		/* Private Constructors and Destructors */
 		Animal( std::string type );
 
+		/* Private Getters and Setters */
+		void	setType( std::string type );
+
 		/* Private Attributes */
-		std::string	_type;
-	
+		std::string	_type;	
 
 };
 

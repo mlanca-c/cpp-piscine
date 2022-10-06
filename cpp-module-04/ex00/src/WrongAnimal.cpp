@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:17:56 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/30 16:39:03 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 08:34:59 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,21 @@
 /* ************************************************************************** */
 
 WrongAnimal::WrongAnimal( void ) : _type( "WrongAnimal" ) {
-	DEBUG( "<WrongAnimal> default constructor called" );
+	DEBUG( "WrongAnimal <" << this->_type << "> default constructor called" );
 }
 
-WrongAnimal::~WrongAnimal( void ) { DEBUG( "<WrongAnimal> destructor called" ); }
+WrongAnimal::~WrongAnimal( void ) {
+	DEBUG( "WrongAnimal <" << this->_type << "> destructor called" );
+}
 
 WrongAnimal::WrongAnimal( WrongAnimal const& src ) {
 
 	*this = src;
-	DEBUG( "<WrongAnimal> copy constructor called" );
+	DEBUG( "WrongAnimal <" << this->_type << "> copy constructor called" );
 }
 
 WrongAnimal::WrongAnimal( std::string type ) : _type( type ) {
-	DEBUG( "<" << this->_type << "> constructor called" );
+	DEBUG( "WrongAnimal <" << this->_type << "> constructor called" );
 }
 
 /* ************************************************************************** */

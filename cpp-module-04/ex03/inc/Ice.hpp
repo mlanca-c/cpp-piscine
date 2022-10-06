@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 22:10:08 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/03 19:14:34 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 09:54:55 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,10 @@ class Ice : public AMateria {
 
 		/* Other Functions */
 		Ice*	clone( void ) const;
-		void		use( ICharacter& target );
+		void	use( ICharacter& target );
 
 	private:
-
-		/* Private Attributes */
 	
-
 };
 
 /* ************************************************************************** */

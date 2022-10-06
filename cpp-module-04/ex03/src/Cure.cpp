@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 17:49:43 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/03 20:26:22 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 09:59:51 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ Cure::Cure( void ) : AMateria( "cure" ) {
 
 Cure::~Cure( void ) { DEBUG( "<Cure> destructor called" ); }
 
-Cure::Cure( Cure const& src ) : AMateria( src._type ) {
+Cure::Cure( Cure const& src ) {
+
+	*this = src;
 	DEBUG( "<Cure> copy constructor called" );
 }
 
@@ -32,13 +34,13 @@ Cure::Cure( Cure const& src ) : AMateria( src._type ) {
 
 Cure&	Cure::operator=( Cure const& rhs ) {
 
-	const_cast<std::string&>( this->_type ) = rhs._type;
+	AMateria::operator=( rhs );
 	return ( *this );
 }
 
 std::ostream&	operator<<( std::ostream& os, Cure const& rhs ) {
 
-	os << "<AMateria> " << rhs.getType();
+	os << "Materia <" << rhs.getType() << ">";
 	return ( os );
 }
 

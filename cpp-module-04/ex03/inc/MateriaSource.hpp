@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 19:42:00 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/03 19:54:52 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 10:09:42 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class MateriaSource : public IMateriaSource {
 
 		/* Getters and Setters */
 		AMateria*	getInventory( int idx ) const;
+		int			getAmount( void ) const;
 
 		/* Other Functions */
 		void		learnMateria( AMateria* m );
@@ -48,7 +49,7 @@ class MateriaSource : public IMateriaSource {
 
 		/* Private Attributes */
 		AMateria*	_inventory[4];
-	
+		int			_amount;
 
 };
 

@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 22:03:53 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/03 18:41:45 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/27 09:57:27 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class AMateria {
 	public:
 
 		/* Constructors and Destructors */
+		AMateria( void );
 		virtual ~AMateria( void );
 		AMateria( AMateria const& src );
 
@@ -52,11 +53,6 @@ class AMateria {
 		/* Private Attributes */
 		std::string const	_type;
 	
-	private:
-
-		/* Private Constructor */
-		AMateria( void );
-
 };
 
 /* ************************************************************************** */
