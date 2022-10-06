@@ -39,7 +39,11 @@
 # the library section.
 # **************************************************************************** #
 
+<<<<<<< HEAD:cpp-module-00/ex00/Makefile
+PROJECT	:= cpp-module-00
+=======
 PROJECT	:= cpp-module-01
+>>>>>>> cpp-module-01:cpp-module-01/ex00/Makefile
 VERSION	:= 3
 
 USER	:= mlanca-c
@@ -48,7 +52,11 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
+<<<<<<< HEAD:cpp-module-00/ex00/Makefile
+NAME1	:= megaphone
+=======
 NAME1	:= brainZ
+>>>>>>> cpp-module-01:cpp-module-01/ex00/Makefile
 
 NAMES	:= ${NAME1}
 

@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= brainZ
+NAME1	:= moarBrainZ
 
 NAMES	:= ${NAME1}
 
@@ -374,6 +374,9 @@ run: run_bin_1
 
 rund: CFLAGS += -DD=1
 rund: clean run
+
+run-%: ${BIN}${NAME1}
+	${AT} ./${BIN_ROOT}${NAME1} $* ${BLOCK}
 
 run_clean: run fclean clean_dep
 

@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= brainZ
+NAME1	:= hiBrain
 
 NAMES	:= ${NAME1}
 
@@ -137,7 +137,7 @@ _INFO		:= ${YELLOW}[info]:${RESET}
 ifeq (${LANG},C)
 	CC := gcc
 else ifeq (${LANG},C++)
-	CC := clang++
+	CC := c++
 endif
 
 # Compiler flags
@@ -374,6 +374,9 @@ run: run_bin_1
 
 rund: CFLAGS += -DD=1
 rund: clean run
+
+run-%: ${BIN_ROOT}${NAME1}
+	${AT} ./${BIN_ROOT}${NAME1} $* ${BLOCK}
 
 run_clean: run fclean clean_dep
 

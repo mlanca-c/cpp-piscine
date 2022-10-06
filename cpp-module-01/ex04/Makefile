@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= brainZ
+NAME1	:= sed
 
 NAMES	:= ${NAME1}
 
@@ -137,7 +137,7 @@ _INFO		:= ${YELLOW}[info]:${RESET}
 ifeq (${LANG},C)
 	CC := gcc
 else ifeq (${LANG},C++)
-	CC := clang++
+	CC := c++
 endif
 
 # Compiler flags
@@ -371,9 +371,16 @@ run_bin_1: ${BIN_ROOT}${NAME1}
 	${AT} ./${BIN_ROOT}${NAME1} ${BLOCK}
 
 run: run_bin_1
+run-%: ${BIN}${NAME1}
+	${AT} ./${BIN_ROOT}${NAME1} $* ${BLOCK}
 
 rund: CFLAGS += -DD=1
 rund: clean run
+
+rund-%: CFLAGS += -DD=1
+rund-%: clean run
+rund-%: ${BIN}${NAME1}
+	${AT} ./${BIN_ROOT}${NAME1} $* ${BLOCK}
 
 run_clean: run fclean clean_dep
 
