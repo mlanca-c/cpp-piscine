@@ -49,14 +49,10 @@ int	main( int argc, char *argv[] ) {
 	{
 		LOG( "test 3: 0 Zombies" );
 		horde = zombieHorde( 0, name );
-
-		delete [] horde;
 	}
 	{
 		LOG( "test 4: -2 Zombies" );
 		horde = zombieHorde( -2, name );
-
-		delete [] horde;
 	}
 
 	return ( 0 );
