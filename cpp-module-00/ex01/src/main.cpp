@@ -38,6 +38,6 @@ static void cli(void)
 		else if (command == "EXIT")
 			break ;
 		else
-			std::cout << "[error]: could not find command" << std::endl;
+			ERROR( "could not find command"  );
 	}
 }

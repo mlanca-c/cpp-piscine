@@ -141,7 +141,7 @@ else ifeq (${LANG},C++)
 endif
 
 # Compiler flags
-CFLAGS := -Wall -Wextra -Werror -std=c++98
+CFLAGS := -Wall -Wextra -Werror
 
 # Pedantic flags
 ifeq (${PEDANTIC},true)
@@ -360,11 +360,6 @@ vpath %.d $(DEP_DIRS)
 
 all: ${BINS}
 
-run_bin_1: ${BIN_ROOT}${NAME1}
-	${AT} ./${BIN_ROOT}${NAME1} ${BLOCK}
-
-run: run_bin_1 fclean clean_dep
-
 .SECONDEXPANSION:
 ${BIN_ROOT}${NAME1}: ${LIBFT} ${MLX_LIB} $$(call get_files,$${@F},$${OBJS_LIST})
 	${AT}${PRINT} "${_BINS} $@\n" ${BLOCK}
@@ -372,9 +367,15 @@ ${BIN_ROOT}${NAME1}: ${LIBFT} ${MLX_LIB} $$(call get_files,$${@F},$${OBJS_LIST})
 	${AT}${CC} ${CFLAGS} ${INCS} ${ASAN_FILE}\
 		$(call get_files,${@F},${OBJS_LIST}) ${LIBS} -o $@ ${BLOCK}
 
-${LIBFT}: $$(call get_lib_target,$${DEFAULT_LIBS},all) ;
+run_bin_1: ${BIN_ROOT}${NAME1}
+	${AT} ./${BIN_ROOT}${NAME1} ${BLOCK}
 
-${MLX_LIB}: make -C ${MLX_ROOT}
+run: run_bin_1
+
+rund: CFLAGS += -DDEBUG=1
+rund: clean run
+
+run_clean: run fclean clean_dep
 
 # **************************************************************************** #
 # Clean Targets
@@ -437,23 +438,8 @@ debug_msan_re: fclean debug_msan
 # **************************************************************************** #
 
 .init:
-	${AT}${PRINT} "${_INFO} creating folder structure\n" ${BLOCK}
-	${AT}${MKDIR} ${DEP_ROOT} ${BLOCK}
-	${AT}${MKDIR} ${BIN_ROOT} ${BLOCK}
-	${AT}${MKDIR} ${DEP_ROOT} ${BLOCK}
 	${AT}${MKDIR} ${INC_ROOT} ${BLOCK}
-	${AT}${MKDIR} ${OBJ_ROOT} ${BLOCK}
 	${AT}${MKDIR} ${SRC_ROOT} ${BLOCK}
-	${AT}${PRINT} "${_INFO} initializing git repository\n" ${BLOCK}
-	${AT}git init ${BLOCK}
-	${AT}echo "*.o\n*.d\n.vscode\na.out\n.DS_Store\nbin/\n*.ignore"\
-		> .gitignore ${BLOCK}
-	${AT}date > $@ ${BLOCK}
-	${AT}${PRINT} "${_INFO} creating first commit\n" ${BLOCK}
-	${AT}git add .gitignore ${BLOCK}
-	${AT}git add $@ ${BLOCK}
-	${AT}git add Makefile ${BLOCK}
-	${AT}git commit -m "init" ${BLOCK}
 
 # Meta target to force a target to be executed
 .FORCE: ;

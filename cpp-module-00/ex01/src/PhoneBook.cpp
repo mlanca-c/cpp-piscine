@@ -30,7 +30,7 @@ int	PhoneBook::getNuContacts( void ) {
 
 	if ( this->_nuContacts >= 0 && this->_nuContacts <= 8 )
 		return ( this->_nuContacts );
-	return (8);
+	return ( 8 );
 }
 
 Contact	PhoneBook::getContact( int idx ) {

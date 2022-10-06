@@ -141,7 +141,7 @@ else ifeq (${LANG},C++)
 endif
 
 # Compiler flags
-CFLAGS := -Wall -Wextra -Werror -std=c++98
+CFLAGS := -Wall -Wextra -Werror
 
 # Pedantic flags
 ifeq (${PEDANTIC},true)

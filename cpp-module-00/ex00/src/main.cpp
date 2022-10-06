@@ -13,20 +13,23 @@
 #include <iostream>
 #include <string.h>
 
-int	main(int argc, char **argv) {
+int	main( int argc, char **argv ) {
+
+	( void )argc;
+	( void )argv;
 
 	std::string	str;
 
 	if ( argc == 1 ) {
 		std::cout << "* LOUD AND UNBERABLE FEEDBACK NOISE *" << std::endl;
-		return (0);
+		return ( 0 );
 	}
 
 	for ( int i = 1; i < argc; i++ ) {
-		str = std::string(argv[i]);
 
-		for ( int j = 0; j < ( int )str.length(); j++ )
-			std::cout << ( char )std::toupper(str[j]);
+		str = std::string(argv[i]);
+		for ( int j = 0; j < static_char<int>( str.length() ); j++ )
+			std::cout << static_char<char>( std::toupper( str[j] ));
 		std::cout << " ";
 	}
 	std::cout << std::endl;
