@@ -34,6 +34,7 @@ Fixed::~Fixed( void ) { DEBUG( "<Fixed> destructor called"); }
 /* ************************************************************************** */
 
 Fixed&	Fixed::operator=( Fixed const& rhs ) {
+
 	DEBUG("<Fixed> operator= called");
 	this->setRawBits( rhs.getRawBits() );
 	return (*this);

@@ -165,6 +165,11 @@ ifeq (${PEDANTIC},true)
 	endif
 endif
 
+# Program Compiles in Debug Mode
+ifeq (${D}, 1)
+	CFLAGS += -DD=1
+endif
+
 # Generic debug flags
 DFLAGS := -g
 
