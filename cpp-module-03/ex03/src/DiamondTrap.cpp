@@ -6,7 +6,7 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 12:44:19 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/06/29 13:03:12 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/09/22 09:16:43 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,32 @@
 /* Constructors and Destructors                                               */
 /* ************************************************************************** */
 
-DiamondTrap::DiamondTrap( void ) : _name( "DiamondTrap" ) {
+DiamondTrap::DiamondTrap( void ) : _name( "Diamond" ) {
 
     ClapTrap::_name = _name + "_clap_name";
-    this->_hit = FragTrap::_hit;
-    this->_energy = ScavTrap::_energy;
-    this->_attack = FragTrap::_attack;
-	DEBUG( "<DiamondTrap> default constructor called" );
+	this->_hitPoints = FragTrap::_hp;
+    this->_energy = ScavTrap::_ep;
+    this->_attack = FragTrap::_ad;
+	DEBUG( "Diamond <" << this->_name << "> default constructor called" );
 }
 
-DiamondTrap::~DiamondTrap( void ) { DEBUG( "<FragTrap> destructor called" ); }
+DiamondTrap::~DiamondTrap( void ) {
+	DEBUG( "Diamond <" << this->_name << "> destructor called" );
+}
 
 DiamondTrap::DiamondTrap( DiamondTrap const& src ) {
 
 	*this = src;
-	DEBUG( "<FragTrap> copy constructor called" );
+	DEBUG( "Diamond <" << this->_name << "> copy constructor called" );
 }
 
 DiamondTrap::DiamondTrap( std::string name ) : _name( name ) {
 
     ClapTrap::_name = _name + "_clap_name";
-    this->_hit = FragTrap::_hit;
-    this->_energy = ScavTrap::_energy;
-    this->_attack = FragTrap::_attack;
-	DEBUG( "<" << this->_name << "> constructor called" );
+	this->_hitPoints = FragTrap::_hp;
+    this->_energy = ScavTrap::_ep;
+    this->_attack = FragTrap::_ad;
+	DEBUG( "Diamond <" << this->_name << "> constructor called" );
 }
 
 /* ************************************************************************** */
@@ -56,11 +58,11 @@ DiamondTrap&	DiamondTrap::operator=( DiamondTrap const& rhs ) {
 
 std::ostream&	operator<<( std::ostream& os, DiamondTrap const& rhs ) {
 
-	os << "DiamondTrap <" << rhs.getName();
-	os << "> Hit( " << rhs.getHit();
-	os << " ); Energy( " << rhs.getEnergy();
-	os << " ); Attack( " << rhs.getAttack();
-	os << " );";
+	os << "DiamondTrap <" << rhs.getName()
+	   << "> Hit( " << rhs.getHit()
+	   << " ); Energy( " << rhs.getEnergy()
+	   << " ); Attack( " << rhs.getAttack()
+	   << " );";
 
 	return ( os );
 }
@@ -78,11 +80,11 @@ void	DiamondTrap::setName( std::string name ) { this->_name = name; }
 /* ************************************************************************** */
 
 void	DiamondTrap::attack( const std::string& target ) {
-	FragTrap::attack( target );
+	ScavTrap::attack( target );
 }
 
 void	DiamondTrap::whoAmI( void ) {
 
-	std::cout << "DiamondTrap <" << this->_name << "> ClapTrap name is <";
-	std::cout << ClapTrap::_name << ">" << std::endl;
+	std::cout << "DiamondTrap <" << this->_name << "> ClapTrap name is <"
+			  << ClapTrap::_name << ">" << std::endl;
 }

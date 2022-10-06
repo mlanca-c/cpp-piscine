@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 16:44:28 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/29 13:04:57 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/09/22 09:15:59 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ class ScavTrap : virtual public ClapTrap {
 	protected:
 
 		/* Private Attributes */
-		bool	_gateMode;
+		bool				_gateMode;
+		static int const	_hp;
+		static int const	_ep;
+		static int const	_ad;
 
 };
 

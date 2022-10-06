@@ -44,11 +44,6 @@ class ClapTrap {
 		unsigned int	getEnergy( void ) const;
 		unsigned int	getAttack( void ) const;
 
-		void	setName( std::string name );
-		void	setHit( unsigned int hit );
-		void	setEnergy( unsigned int energy );
-		void	setAttack( unsigned int attack );
-
 		/* Other Functions */
 		void	attack( const std::string& target );
 		void	takeDamage( unsigned int amount );
@@ -56,9 +51,15 @@ class ClapTrap {
 
 	private:
 
+		/* Private Getters and Setters */
+		void	setName( std::string name );
+		void	setHit( unsigned int hit );
+		void	setEnergy( unsigned int energy );
+		void	setAttack( unsigned int attack );
+
 		/* Private Attributes */
 		std::string		_name;
-		unsigned int	_hit;
+		unsigned int	_hitPoints;
 		unsigned int	_energy;
 		unsigned int	_attack;
 

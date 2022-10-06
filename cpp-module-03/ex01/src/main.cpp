@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 15:53:23 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/26 17:13:55 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/22 09:39:01 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,46 +20,41 @@ int	main( int argc, char *argv[] ) {
 	( void )argc;
 	( void )argv;
 	{
-		LOG( "test 1: testing derived class" );
-		ScavTrap	a = ScavTrap( "Scav" );
+		LOG( "test 1: basic class testing" );
+		ScavTrap	a = ScavTrap( "ScavA" );
 		ScavTrap	b( a );
 		ScavTrap	c;
 
 		c = b;
-
 		std::cout << "a: " << a << std::endl;
 		std::cout << "b: " << b << std::endl;
 		std::cout << "c: " << c << std::endl;
 	}
 	{
-		LOG( "test 2: testing inheritance" );
+		LOG( "test 2: let's fight - ROUND 1" );
+		ScavTrap	scav = ScavTrap( "Scav" );
 		ClapTrap	clap = ClapTrap( "Clap" );
+
+		std::cout << scav << std::endl;
+		std::cout << clap << std::endl;
+
+		clap.attack( "Scav" );
+		scav.attack( "Clap" );
+		clap.takeDamage( scav.getAttack() );
+		std::cout << scav << std::endl;
+		std::cout << clap << std::endl;
+	}
+	{
+		LOG( "test 3: testing Gate Keeper Mode" );
 		ScavTrap	scav = ScavTrap( "Scav" );
 
 		std::cout << scav << std::endl;
-		scav.attack( "a rock" );
-		scav.attack( "another rock" );
-		scav.attack( "yet another rock" );
-		std::cout << scav << std::endl;
-		scav.takeDamage( 42 );
-		std::cout << scav << std::endl;
-		scav.beRepaired( 12 );
-		std::cout << scav << std::endl;
-		scav.attack( "yet another rock" );
 		scav.guardGate();
+		scav.attack( "a rock" );
+		scav.beRepaired( 12 );
+		scav.guardGate();
+		scav.attack( "a rock" );
 		std::cout << scav << std::endl;
-
-		std::cout << clap << std::endl;
-		clap.attack( "a rock" );
-		clap.attack( "another rock" );
-		clap.attack( "yet another rock" );
-		std::cout << clap << std::endl;
-		clap.takeDamage( 42 );
-		std::cout << clap << std::endl;
-		clap.beRepaired( 12 );
-		std::cout << clap << std::endl;
-		clap.attack( "yet another rock" );
-		std::cout << clap << std::endl;
 	}
 	return ( 0 );
 }

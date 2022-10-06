@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 17:32:51 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/29 13:02:21 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:00:39 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 /* Class                                                                      */
 /* ************************************************************************** */
 
-class DiamondTrap : public ScavTrap, public FragTrap {
+class DiamondTrap : public FragTrap, public ScavTrap {
 
 	public:
 

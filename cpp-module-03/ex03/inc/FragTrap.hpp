@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 17:17:31 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/29 13:04:47 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/09/22 09:15:53 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ class FragTrap : virtual public ClapTrap {
 	protected:
 
 		/* Private Attributes */
+		static int const	_hp;
+		static int const	_ep;
+		static int const	_ad;
 
 };
 

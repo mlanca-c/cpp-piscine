@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 16:49:20 by mlancac           #+#    #+#             */
-/*   Updated: 2022/06/29 12:33:31 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:32:54 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,31 @@
 /* Constructors and Destructors                                               */
 /* ************************************************************************** */
 
-ScavTrap::ScavTrap( void ) : ClapTrap(), _gateMode( false ) {
+ScavTrap::ScavTrap( void ) : _gateMode( false ) {
 
-	this->_name = "ScavTrap";
-	this->_hit = 100;
+	this->_name = "Scav";
+	this->_hitPoints = 100;
 	this->_energy = 50;
-	this->_attack = 50;
-	DEBUG( "<ScavTrap> default constructor called" );
+	this->_attack = 20;
+	DEBUG( "ScavTrap <" << this->_name << "> default constructor called" );
 }
 
-ScavTrap::~ScavTrap( void ) { DEBUG( "<ScavTrap> destructor called" ); }
+ScavTrap::~ScavTrap( void ) {
+	DEBUG( "ScavTrap <" << this->_name << "> detructor called" );
+}
 
-ScavTrap::ScavTrap( ScavTrap const& src ) {
+ScavTrap::ScavTrap( ScavTrap const& src ) : ClapTrap( src ) {
 
 	*this = src;
-	DEBUG( "<ScavTrap> copy constructor called" );
+	DEBUG( "ScavTrap <" << this->_name << "> copy constructor called" );
 }
 
 ScavTrap::ScavTrap( std::string name ) : ClapTrap( name ), _gateMode( false ) {
 
-	this->_hit = 100;
+	this->_hitPoints = 100;
 	this->_energy = 50;
-	this->_attack = 50;
-	DEBUG( "<" << this->_name << "> constructor called" );
+	this->_attack = 20;
+	DEBUG( "ScavTrap <" << this->_name << "> constructor called" );
 }
 
 /* ************************************************************************** */
@@ -55,12 +57,12 @@ ScavTrap&	ScavTrap::operator=( ScavTrap const& rhs ) {
 
 std::ostream&	operator<<( std::ostream& os, ScavTrap const& rhs ) {
 
-	os << "ScavTrap <" << rhs.getName();
-	os << "> Hit( " << rhs.getHit();
-	os << " ); Energy( " << rhs.getEnergy();
-	os << " ); Attack( " << rhs.getAttack();
-	os << " ); GateKeeper Mode( " << ( rhs.getGateMode() ? "true" : "false" );
-	os << " );";
+	os << "ScavTrap <" << rhs.getName()
+	   << "> Hit( " << rhs.getHit()
+	   << " ); Energy( " << rhs.getEnergy()
+	   << " ); Attack( " << rhs.getAttack()
+	   << " ); GateKeeper Mode( " << ( rhs.getGateMode() ? "true" : "false" )
+	   << " );";
 
 	return ( os );
 }
@@ -81,23 +83,26 @@ void	ScavTrap::attack( const std::string& target ) {
 
 	std::cout << "ScavTrap " << this->_name << " ";
 
-	if ( this->_energy == 0 )
-		std::cout << "has no energy left and cannot attack!";
-	else if ( this->_hit == 0 )
-		std::cout << "has no hit points left and cannot attack!";
+	if ( this->_hitPoints == 0 ) std::cout << "is dead and cannot attack";
+	else if ( this->_gateMode )
+		std::cout << "is guarding the gate and cannot attack";
+	else if ( this->_energy == 0 )
+		std::cout << "has no energy left and cannot attack";
 	else {
 
 		std::cout << "attacks " << target << ", causing " ;
-		std::cout << this->_attack << " points of damage!";
-		this->_hit--;
+		std::cout << this->_attack << " points of damage";
 		this->_energy--;
 	}
-	std::cout << std::endl;
+	std::cout << "!" << std::endl;
 }
 
 void	ScavTrap::guardGate( void ) {
 
 	( this->_gateMode ? this->_gateMode = false : this->_gateMode = true );
 	std::cout << "ScavTrap " << this->_name << " ";
-	std::cout << "is now in gatekeeper mode" << std::endl;
+	if ( this->_gateMode )
+		std::cout << "is now in gatekeeper mode" << std::endl;
+	else
+		std::cout << "is no longer in gatekeeper mode" << std::endl;
 }
