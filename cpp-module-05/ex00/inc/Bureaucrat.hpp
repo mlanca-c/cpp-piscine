@@ -1,0 +1,81 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/04 10:31:49 by mlancac           #+#    #+#             */
+/*   Updated: 2022/07/04 11:50:20 by mlancac          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
+
+/* ************************************************************************** */
+/* Headers                                                                    */
+/* ************************************************************************** */
+
+# include <iostream>
+# include "Debug.hpp"
+# include <exception>
+
+/* ************************************************************************** */
+/* Class                                                                      */
+/* ************************************************************************** */
+
+class Bureaucrat {
+
+	public:
+
+		/* Constructors and Destructors */
+		~Bureaucrat( void );
+		Bureaucrat( Bureaucrat const& src );
+
+		Bureaucrat( std::string const& name, int grade ) throw( std::exception );
+
+		/* Operator Overload */
+		Bureaucrat&	operator=( Bureaucrat const& rhs );
+
+		/* Getters and Setters */
+		std::string const&	getName( void ) const;
+		int					getGrade( void ) const;
+
+		/* Other Functions */
+		void	incrementGrade( void ) throw( std::exception ) ;
+		void	decrementGrade( void ) throw( std::exception ) ;
+
+		/* Exceptions */
+		class GradeTooHighException : public std::exception {
+ 			public:
+				char const* what( void ) const throw();
+		};
+
+		class GradeTooLowException : public std::exception {
+			public:
+				char const* what( void ) const throw();
+		};
+
+	protected:
+
+		/* Protected Constructors and Destructors */
+		Bureaucrat( void );
+
+	private:
+
+
+		/* Private Attributes */
+		std::string const	_name;
+		int					_grade;
+	
+
+};
+
+/* ************************************************************************** */
+/* Other Functions                                                            */
+/* ************************************************************************** */
+
+std::ostream&	operator<<( std::ostream& os, Bureaucrat const& rhs );
+
+#endif /* BUREAUCRAT_HPP */
