@@ -16,21 +16,23 @@
 /* Constructors and Destructors                                               */
 /* ************************************************************************** */
 
-Zombie::Zombie( void ) { DEBUG("<Zombie> default constructor called"); }
+Zombie::Zombie( void ) : _name( "Zombie" ) {
+	DEBUG( "<" << this->getName() << "> default constructor called" );
+}
 
 Zombie::~Zombie( void ) {
-	DEBUG("<" << this->getName() << "> destructor called");
+	DEBUG( "<" << this->getName() << "> destructor called" );
 }
 
 Zombie::Zombie( std::string name ) : _name( name ) {
-	DEBUG("<" << this->_name << "> constructor called");
+	DEBUG( "<" << this->_name << "> constructor called" );
 }
 
 /* ************************************************************************** */
 /* Getters and Setters                                                        */
 /* ************************************************************************** */
 
-std::string	Zombie::getName( void ) const { return (this->_name); }
+std::string	Zombie::getName( void ) const { return ( this->_name ); }
 
 void	Zombie::setName( std::string name ) { this->_name = name; }
 

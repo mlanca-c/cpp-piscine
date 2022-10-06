@@ -25,8 +25,19 @@ int	main( int argc, char *argv[] ) {
 		z.anounce();
 	}
 	{
+		LOG( "test 2: testing newZombie Function" );
+		Zombie*	newZ;
 
-		LOG( "test 2: testing randomChump and newZombie functions" );
+		newZ = newZombie( "new z" );
+		newZ->anounce();
+		delete newZ;
+	}
+	{
+		LOG( "test 3: testing randomChump function" );
+		randomChump( "random z" );
+	}
+	{
+		LOG( "test 4: testing two functions together" );
 		Zombie	z = Zombie( "z" );
 		Zombie*	newZ;
 
@@ -34,10 +45,7 @@ int	main( int argc, char *argv[] ) {
 		newZ->anounce();
 		delete newZ;
 
-		z.anounce();
-
 		randomChump( "random z" );
 	}
-
 	return (0);
 }
