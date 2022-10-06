@@ -24,15 +24,15 @@ int	main( int argc, char *argv[] ) {
 		Weapon		club = Weapon( "crude spiked club" );
 		std::string	str;
 
-		DEBUG("<Weapon>: " << club.getType());
+		std::cout << "<Weapon>: " << club.getType() << std::endl;
 		club.setType("some other type of club");
-		DEBUG("<Weapon>: " << club.getType());
+		std::cout << "<Weapon>: " << club.getType() << std::endl;
 
 		str = club.getType();
-		DEBUG("<str>: " << str);
+		std::cout << "<str>: " << str << std::endl;
 		str = "crude spiked club";
-		DEBUG("<str>: " << str);
-		DEBUG("<Weapon>: " << club.getType());
+		std::cout << "<str>: " << str << std::endl;
+		std::cout << "<Weapon>: " << club.getType() << std::endl;
 	}
 	{
 		LOG("test 2: testing HumanA");
