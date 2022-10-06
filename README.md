@@ -1,6 +1,6 @@
 # cpp-piscine
 
- <small description of project>
+ A bunch of C++ Modules to learn the language.
 
 [![Intro](https://img.shields.io/badge/Cursus-cpp_piscine-success?style=for-the-badge&logo=42)](https://github.com/mlanca-c/cpp-piscine)
  
