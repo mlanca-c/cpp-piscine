@@ -17,22 +17,22 @@
 /* ************************************************************************** */
 
 Literal::Literal( void ) : _value( "0" ), _type( INT ) {
-	DEBUG( "Literal <" this->_value "> default constructor called" );
+	DEBUG( "Literal <" << this->_value << "> default constructor called" );
 }
 Literal::Literal( std::string str ) : _value( str ) {
 
 	this->_type = this->_setType();
-	DEBUG( "Literal <" this->_value "> constructor called" );
+	DEBUG( "Literal <" << this->_value << "> constructor called" );
 }
 
 Literal::~Literal( void ) {
-	DEBUG( "Literal <" this->_value "> destructor called" );
+	DEBUG( "Literal <" << this->_value << "> destructor called" );
 }
 
 Literal::Literal( Literal const& src ) {
 
 	*this = src;
-	DEBUG( "Literal <" this->_value "> copy constructor called" );
+	DEBUG( "Literal <" << this->_value << "> copy constructor called" );
 }
 
 /* ************************************************************************** */
