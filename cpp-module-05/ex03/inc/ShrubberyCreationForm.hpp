@@ -2,11 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
+/*                                                    +:+ +s:+         +:+     */
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:43:11 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 13:50:31 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/10/06 11:09:30 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 # include <iostream>
 # include <exception>
+# include <fstream>
+# include <string>
 # include "Debug.hpp"
 # include "Bureaucrat.hpp"
 # include "Form.hpp"
@@ -47,6 +49,9 @@ class ShrubberyCreationForm : public Form {
 
 		/* Private Constructors and Destructors */
 		ShrubberyCreationForm( void );
+
+		/* Other Private Functions */
+		void	_execute( void ) const;
 	
 };
 

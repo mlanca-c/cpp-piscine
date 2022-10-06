@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:52:07 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 13:52:45 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/10/06 11:09:42 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@ class PresidentialPardonForm : public Form {
 		/* Private Constructors and Destructors */
 		PresidentialPardonForm( void );
 	
+		/* Other Private Functions */
+		void	_execute( void ) const;
 
 };
 
 #endif /* PRESIDENTIAL_PARDON_FORM_HPP */
-

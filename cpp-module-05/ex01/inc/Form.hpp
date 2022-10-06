@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:44:33 by mlancac           #+#    #+#             */
-/*   Updated: 2022/09/22 14:49:15 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/28 10:23:05 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class Form {
 		~Form( void );
 		Form( Form const& src );
 
-		Form( std::string const& name, bool isSigned, int signedGrade,
+		Form( std::string const& name, int signedGrade,
 	   		int executeGrade ) throw( std::exception );
 
 		/* Operator Overload */
@@ -55,7 +55,7 @@ class Form {
 		/* Exceptions */
 		class GradeTooHighException : public std::exception {
 			public:
-				 char const*	what( void ) const throw();
+				char const*	what( void ) const throw();
 		};
 
 		class GradeTooLowException : public std::exception {
@@ -63,11 +63,12 @@ class Form {
 				char const*	what( void ) const throw();
 		};
 
+		class FormAlreadySignedException: public std::exception {
+			public:
+				char const*	what( void ) const throw();
+		};
+
 	private:
-
-
-		/* Private Functions */
-		void	_gradeValid( void ) const throw( std::exception );
 
 		/* Private Attributes */
 		std::string const	_name;

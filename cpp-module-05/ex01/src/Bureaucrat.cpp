@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 10:38:31 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 13:21:48 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/28 10:48:30 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,17 @@
 /* ************************************************************************** */
 
 Bureaucrat::Bureaucrat( void ) : _name( "bureaucrat" ), _grade( 150 ) {
-	DEBUG( "<Bureaucrat> default constructor called" );
+	DEBUG( "Bureaucrat <" << this->_name << "> default constructor called" );
 }
 
-Bureaucrat::~Bureaucrat( void ) { DEBUG( "<Bureaucrat> destructor called" ); }
+Bureaucrat::~Bureaucrat( void ) {
+	DEBUG( "Bureaucrat <" << this->_name << "> destructor called" );
+}
 
 Bureaucrat::Bureaucrat( Bureaucrat const& src ) {
 
 	*this = src;
-	DEBUG( "<Bureaucrat> copy constructor called" );
+	DEBUG( "Bureaucrat <" << this->_name << "> copy constructor called" );
 }
 
 Bureaucrat::
@@ -33,9 +35,9 @@ Bureaucrat::
 	: _name( name ) {
 
 	if ( grade > 150 )
-		throw( Bureaucrat::GradeTooHighException() );
-	if ( grade < 0 )
 		throw( Bureaucrat::GradeTooLowException() );
+	if ( grade < 1 )
+		throw( Bureaucrat::GradeTooHighException() );
 	else
 		this->_grade = grade;
 	DEBUG( "<Bureaucrat> " << this->_name << " constructor called" );
@@ -69,13 +71,15 @@ std::string const&	Bureaucrat::getName( void ) const {
 
 int	Bureaucrat::getGrade( void ) const { return ( this->_grade ); }
 
+void	Bureaucrat::setGrade( int grade ) { this->_grade = grade; }
+
 /* ************************************************************************** */
 /* Other Functions                                                            */
 /* ************************************************************************** */
 
 void	Bureaucrat::incrementGrade( void ) throw( std::exception ) {
 
-	if ( this->_grade - 1 < 0 )
+	if ( this->_grade - 1 < 1 )
 		throw( Bureaucrat::GradeTooLowException() );
 	this->_grade--;
 }
@@ -89,18 +93,19 @@ void	Bureaucrat::decrementGrade( void ) throw( std::exception ) {
 
 void	Bureaucrat::signForm( Form& form ) {
 
-	try { form.beSigned( *this ); }
+	try {
+
+		form.beSigned( *this );
+		std::cout << "<Bureaucrat> " << this->_name << " signed "
+				  << form.getName() << std::endl;
+	}
 	catch ( std::exception& e ) {
 
-		std::cout << "<Bureaucrat> " << this->_name << " couldn't sign ";
-		std::cout << form.getName() << " because " << e.what() << std::endl;
-
-		return ;
+		std::cout << "<Bureaucrat> " << this->_name << " couldn't sign "
+				  << form.getName() << " because " << e.what() << std::endl;
 	}
-
-	std::cout << "<Bureaucrat> " << this->_name << " signed " << form.getName();
-	std::cout << std::endl;
 }
+
 /* ************************************************************************** */
 /* Exceptions                                                                 */
 /* ************************************************************************** */

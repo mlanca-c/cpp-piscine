@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:44:33 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 13:46:29 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/10/06 11:08:12 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Form {
 		virtual ~Form( void ) {};
 		Form( Form const& src );
 
-		Form( std::string const& name, std::string const& target, bool isSigned,
+		Form( std::string const& name, std::string const& target,
 	   		int signedGrade, int executeGrade ) throw( std::exception );
 
 		/* Operator Overload */
@@ -50,8 +50,8 @@ class Form {
 		int					getExecuteGrade( void ) const;
 
 		/* Other Functions */
-		void			beSigned( Bureaucrat& b ) throw( std::exception );
-		virtual void	execute( Bureaucrat const& b ) const = 0;
+		void	beSigned( Bureaucrat& b ) throw( std::exception );
+		void	execute( Bureaucrat const& b ) const;
 
 		/* Exceptions */
 		class GradeTooHighException : public std::exception {
@@ -64,20 +64,23 @@ class Form {
 				char const*	what( void ) const throw();
 		};
 
+		class FormAlreadySignedException: public std::exception {
+			public:
+				char const*	what( void ) const throw();
+		};
+
 		class FormNotSignedException : public std::exception {
 			public:
 				char const*	what( void ) const throw();
 		};
 
-	protected:
-
-		/* Protected Functions */
-		void	_gradeValid( void ) const throw( std::exception );
-
 	private:
 
 		/* Private Constructors and Destructors */
 		Form( void );
+
+		/* Other Private Functions */
+		virtual void	_execute( void ) const = 0;
 
 		/* Private Attributes */
 		std::string const	_name;

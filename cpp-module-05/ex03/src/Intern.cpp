@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:53:19 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 15:40:24 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/10/06 11:36:11 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 /* ************************************************************************** */
 
 Intern::Intern( void ) {
-	// this->_formTemplate[0] = &Intern::cloneShrubberyCreationForm;
-	// this->_form[0] = "ShrubberyCreationForm";
-	// this->_formTemplate[1] = &Intern::cloneRobotomyRequestForm;
-	// this->_form[1] = "RobotomyRequestForm";
-	// this->_formTemplate[2] = &Intern::clonePresidentialPardonForm;
-	// this->_form[2] = "PresidentialPardonForm";
+
+	this->_formTemplate[0] = &Intern::cloneShrubberyCreationForm;
+	this->_formTemplate[1] = &Intern::cloneRobotomyRequestForm;
+	this->_formTemplate[2] = &Intern::clonePresidentialPardonForm;
+	this->_form[0] = "ShrubberyCreationForm";
+	this->_form[1] = "RobotomyRequestForm";
+	this->_form[2] = "PresidentialPardonForm";
+
 	DEBUG( "<Intern> default constructor called" );
 }
 
@@ -56,48 +58,26 @@ std::ostream&	operator<<( std::ostream& os, Intern const& rhs ) {
 
 Form*	Intern::makeForm( std::string const& name,
 		std::string const& target ) const throw( std::exception ) {
-	Form*	f = NULL;
 
-	try { f = cloneShrubberyCreationForm( name, target ); }
-	catch ( std::exception& e ) {};
-	try { f = cloneRobotomyRequestForm( name, target ); }
-	catch ( std::exception& e ) {};
-	try { f = clonePresidentialPardonForm( name, target ); }
-	catch ( std::exception& e ) {};
-
-	if ( f )
-		std::cout << "<Form> " << f->getName() << " created" << std::endl;
-	else
+	int	i;
+	for (i = 0; i < 3; i++)
+		if ( this->_form[i] == name )
+			break ;
+	if ( i == 3)
 		throw( Intern::NoSuchFormException() );
-
-	return ( f );
+	return (( this->*_formTemplate[i] )( target ));
 }
 
-Form*	Intern::cloneShrubberyCreationForm( std::string const& name,
-		std::string const& target ) const {
-
-	if ( name == "ShrubberyCreationForm" )
-		return ( new ShrubberyCreationForm( target ));
-	throw( Intern::WrongFormException() );
-	return ( NULL );
+Form*	Intern::cloneShrubberyCreationForm( std::string const& target ) const {
+	return ( new ShrubberyCreationForm( target ));
 }
 
-Form*	Intern::cloneRobotomyRequestForm( std::string const& name,
-		std::string const& target ) const {
-
-	if ( name == "RobotomyRequestForm" )
-		return ( new RobotomyRequestForm( target ));
-	throw( Intern::WrongFormException() );
-	return ( NULL );
+Form*	Intern::cloneRobotomyRequestForm( std::string const& target ) const {
+	return ( new RobotomyRequestForm( target ));
 }
 
-Form*	Intern::clonePresidentialPardonForm( std::string const& name,
-		std::string const& target ) const {
-
-	if ( name == "PresidentialPardonForm" )
-		return ( new PresidentialPardonForm( target ));
-	throw( Intern::WrongFormException() );
-	return ( NULL );
+Form*	Intern::clonePresidentialPardonForm( std::string const& target ) const {
+	return ( new PresidentialPardonForm( target ));
 }
 
 /* ************************************************************************** */
@@ -106,8 +86,4 @@ Form*	Intern::clonePresidentialPardonForm( std::string const& name,
 
 char const*	Intern::NoSuchFormException::what( void ) const throw() {
 	return ( "Intern: Exception: no such form" );
-}
-
-char const*	Intern::WrongFormException::what( void ) const throw() {
-	return ( "Intern: Exception: wrong form" );
 }

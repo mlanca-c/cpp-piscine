@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:53:22 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 14:47:56 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/10/06 11:08:46 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,20 @@ Form::Form( Form const& src )
 	DEBUG( "<Form> copy constructor called" );
 }
 
-Form::Form( std::string const& name, std::string const& target, bool isSigned,
+Form::Form( std::string const& name, std::string const& target,
 	int signedGrade, int executeGrade ) throw( std::exception )
-	: _name( name ), _target( target ), _isSigned( isSigned ),
+	: _name( name ), _target( target ), _isSigned( false ),
 	_signedGrade( signedGrade ), _executeGrade( executeGrade ) {
 
-	DEBUG( "<Form> " << this->_name << " constructor called" );
-	this->_gradeValid();
+	if ( this->_signedGrade < 1 )
+		throw( Bureaucrat::GradeTooLowException());
+	if ( this->_signedGrade > 150 )
+		throw( Bureaucrat::GradeTooHighException());
+	if ( this->_executeGrade < 1 )
+		throw( Bureaucrat::GradeTooLowException());
+	if ( this->_executeGrade > 150 )
+		throw( Bureaucrat::GradeTooHighException());
+	DEBUG( "<Form> " << this->_name << "constructor called" );
 }
 
 /* ************************************************************************** */
@@ -43,7 +50,10 @@ Form::Form( std::string const& name, std::string const& target, bool isSigned,
 
 Form&	Form::operator=( Form const& rhs ) {
 
-	( void )rhs;
+	const_cast<std::string&>( this->_name ) = rhs._name;
+	this->_isSigned = rhs._isSigned;
+	*const_cast<int*>(&( this->_signedGrade )) = rhs._signedGrade;
+	*const_cast<int*>(&( this->_executeGrade )) = rhs._executeGrade;
 	return ( *this );
 }
 
@@ -75,22 +85,20 @@ int	Form::getExecuteGrade( void ) const { return ( this->_executeGrade ); }
 /* ************************************************************************** */
 
 void	Form::beSigned( Bureaucrat& b ) throw( std::exception ) {
+	if ( this->_isSigned )
+		throw ( Form::FormAlreadySignedException() );
 	if ( b.getGrade() > this->_signedGrade )
 		throw ( Bureaucrat::GradeTooLowException() );
-	else
-		this->_isSigned = true;
+	this->_isSigned = true;
 }
 
-void	Form::_gradeValid( void ) const throw( std::exception ) {
+void	Form::execute( Bureaucrat const& b ) const {
 
-	if ( this->_signedGrade < 0 )
-		throw( Bureaucrat::GradeTooLowException());
-	if ( this->_signedGrade > 150 )
-		throw( Bureaucrat::GradeTooHighException());
-	if ( this->_executeGrade < 0 )
-		throw( Bureaucrat::GradeTooLowException());
-	if ( this->_executeGrade > 150 )
-		throw( Bureaucrat::GradeTooHighException());
+	if ( this->getIsSigned() == false )
+		throw( Form::FormNotSignedException() );
+	if ( b.getGrade() > this->getExecuteGrade() )
+		throw( Form::GradeTooLowException() );
+	this->_execute();
 }
 
 /* ************************************************************************** */
@@ -103,6 +111,10 @@ char const*	Form::GradeTooHighException::what( void ) const throw() {
 
 char const*	Form::GradeTooLowException::what( void ) const throw() {
 	return ( "Form: Exception: grade too low" );
+}
+
+char const*	Form::FormAlreadySignedException::what( void ) const throw() {
+	return ( "Form: Exception: form was already signed" );
 }
 
 char const*	Form::FormNotSignedException::what( void ) const throw() {

@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:01:19 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 14:47:14 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/10/06 11:10:32 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /* ************************************************************************** */
 
 RobotomyRequestForm::RobotomyRequestForm( void )
-	: Form( "RobotomyRequestForm", "none", false, 72, 45 ) {
+	: Form( "RobotomyRequestForm", "none", 72, 45 ) {
 	DEBUG( "<RobotomyRequestForm> default constructor called" );
 }
 
@@ -31,7 +31,7 @@ RobotomyRequestForm::
 }
 
 RobotomyRequestForm::RobotomyRequestForm( std::string const& target )
-	: Form( "RobotomyRequestForm", target, false, 72, 45 ) {
+	: Form( "RobotomyRequestForm", target, 72, 45 ) {
 	DEBUG( "<RobotomyRequestForm> " << this->getName() << " constructor called" );
 }
 
@@ -50,21 +50,15 @@ RobotomyRequestForm&	RobotomyRequestForm
 /* Other Functions                                                            */
 /* ************************************************************************** */
 
-void	RobotomyRequestForm::execute( Bureaucrat const& b ) const {
+void	RobotomyRequestForm::_execute( void ) const {
 
-	if ( this->getIsSigned() == false ) {
-		std::cout << "<Form> " << this->getName() << " failed because: ";
-		throw( Form::FormNotSignedException() );
-		return ;
-	}
+	srand( time(NULL) );
+	int	i = rand() % 2;
 
-	if ( b.getGrade() > this->getExecuteGrade() ) {
-		std::cout << "<Form> " << this->getName() << " failed because: ";
-		throw( Form::GradeTooLowException() );
-		return ;
-	}
-
-	std::cout << "<Form> " << this->getName() << " makes some drilling noises.";
-	std::cout << " Then, informes " << this->getTarget();
-	std::cout << " has been robotomized successfully 50% of the time" << std::endl;
+	std::cout << "<Form> " << this->getName() << ": * drilling noise * ";
+	std::cout << this->getTarget() << " ";
+	if ( i == 1 )
+		std::cout << " has been robotomized successfully" << std::endl;
+	else
+		std::cout << " has not been robotomized successfully" << std::endl;
 }

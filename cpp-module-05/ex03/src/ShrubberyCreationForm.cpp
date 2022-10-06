@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:32:14 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 14:47:30 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/10/06 11:11:13 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,28 @@
 /* ************************************************************************** */
 
 ShrubberyCreationForm::ShrubberyCreationForm( void )
-	: Form( "ShrubberyCreationForm", "none", false, 145, 137 ) {
-	DEBUG( "<ShrubberyCreationForm> default constructor called" );
+	: Form( "ShrubberyCreationForm", "none", 145, 137 ) {
+
+	DEBUG( "ShrubberyCreationForm <" << this->_name
+	   << "> default constructor called" );
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm( void ) {
-	DEBUG( "<ShrubberyCreationForm> destructor called" );
+	DEBUG( "ShrubberyCreationForm <" << this->_name << "> destructor called" );
 }
 
 ShrubberyCreationForm::
 	ShrubberyCreationForm( ShrubberyCreationForm const& src ) : Form( src ) {
-	DEBUG( "<ShrubberyCreationForm> copy constructor called" );
+
+	DEBUG( "ShrubberyCreationForm <" << this->_name
+	   << "> copy constructor called" );
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( std::string const& target )
-	: Form( "ShrubberyCreationForm", target, false, 145, 137 ) {
-	DEBUG( "<ShrubberyCreationForm> " << this->getName() << " constructor called" );
+	: Form( "ShrubberyCreationForm", target, 145, 137 ) {
+
+	DEBUG( "ShrubberyCreationForm> " << this->getName()
+	   << " constructor called" );
 }
 
 /* ************************************************************************** */
@@ -50,21 +56,25 @@ ShrubberyCreationForm&	ShrubberyCreationForm
 /* Other Functions                                                            */
 /* ************************************************************************** */
 
-void	ShrubberyCreationForm::execute( Bureaucrat const& b ) const {
+void	ShrubberyCreationForm::_execute(void ) const {
 
-	if ( this->getIsSigned() == false ) {
-		std::cout << "<Form> " << this->getName() << " failed because: ";
-		throw( Form::FormNotSignedException() );
-		return ;
+	std::string		filename = this->getTarget() + "_shrubbery";
+	std::ofstream	file;
+
+	try {
+		file.open( filename.c_str() );
+	}
+	catch ( std::exception& e ) {
+		std::cout << e.what() << std::endl;
 	}
 
-	if ( b.getGrade() > this->getExecuteGrade() ) {
-		std::cout << "<Form> " << this->getName() << " failed because: ";
-		throw( Form::GradeTooLowException() );
-		return ;
-	}
-
-	std::cout << "<Form> " << this->getName() << ": created a file ";
-	std::cout << this->getTarget() << "_shrubbery in the working directory, ";
-	std::cout << "and wrote ASCII trees inside it" << std::endl;
+	file << "           {{ }{\n"
+			"          {{}}}{{\n"
+			"        {{}}{}}\n"
+			"           }}}}{\n"
+			"          {{}}{{\n"
+			"            | |    \n";
+	file.close();
+	std::cout << "Created a file "<< filename << "_shrubbery in the working "
+			  << "directory, and wrote an ASCII tree inside it." << std::endl;
 }

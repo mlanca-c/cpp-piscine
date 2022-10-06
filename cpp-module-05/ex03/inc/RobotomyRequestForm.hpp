@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:50:37 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 13:51:59 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/10/06 11:10:56 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 # include <iostream>
 # include <exception>
+# include <cstdlib>
+# include <time.h>
 # include "Debug.hpp"
 # include "Bureaucrat.hpp"
 # include "Form.hpp"
@@ -49,6 +51,9 @@ class RobotomyRequestForm : public Form {
 
 		/* Private Constructors and Destructors */
 		RobotomyRequestForm( void );
+
+		/* Other Private Functions */
+		void	_execute( void ) const;
 	
 
 };

@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:06:25 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 14:49:30 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/10/06 11:11:02 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /* ************************************************************************** */
 
 PresidentialPardonForm::PresidentialPardonForm( void )
-	: Form( "PresidentialPardonForm", "none", false, 25, 5 ) {
+	: Form( "PresidentialPardonForm", "none", 25, 5 ) {
 	DEBUG( "<PresidentialPardonForm> default constructor called" );
 }
 
@@ -31,7 +31,7 @@ PresidentialPardonForm::
 }
 
 PresidentialPardonForm::PresidentialPardonForm( std::string const& target )
-	: Form( "PresidentialPardonForm", target, false, 25, 5 ) {
+	: Form( "PresidentialPardonForm", target, 25, 5 ) {
 	DEBUG( "<PresidentialPardonForm> " << this->getName() << " constructor called" );
 }
 
@@ -50,19 +50,7 @@ PresidentialPardonForm&	PresidentialPardonForm
 /* Other Functions                                                            */
 /* ************************************************************************** */
 
-void	PresidentialPardonForm::execute( Bureaucrat const& b ) const {
-
-	if ( this->getIsSigned() == false ) {
-		std::cout << "<Form> " << this->getName() << " failed because: ";
-		throw( Form::FormNotSignedException() );
-		return ;
-	}
-
-	if ( b.getGrade() > this->getExecuteGrade() ) {
-		std::cout << "<Form> " << this->getName() << " failed because: ";
-		throw( Form::GradeTooLowException() );
-		return ;
-	}
+void	PresidentialPardonForm::_execute( void ) const {
 
 	std::cout << "<Form> " << this->getName() << " informs that ";
 	std::cout << this->getTarget();

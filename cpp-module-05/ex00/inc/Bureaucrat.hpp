@@ -6,7 +6,7 @@
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 10:31:49 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/04 11:50:20 by mlancac          ###   ########.fr       */
+/*   Updated: 2022/09/28 09:53:14 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ class Bureaucrat {
 
 	private:
 
+		/* Private Getters and Setters */
+		void	setGrade( int grade );
 
 		/* Private Attributes */
 		std::string const	_name;
