@@ -6,7 +6,7 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:29:36 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/04/18 17:20:06 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:05:53 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ static void cli(void)
 		else if (command == "EXIT")
 			break ;
 		else
-			std::cout << "[error]: could not find command" << std::endl;
+			ERROR( command << ": doesn't exist");
 	}
 }

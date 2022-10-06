@@ -6,12 +6,11 @@
 /*   By: mlanca-c <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:16:30 by mlanca-c          #+#    #+#             */
-/*   Updated: 2022/06/23 12:27:50 by mlanca-c         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:11:48 by mlanca-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Command.hpp"
-#include <sstream>
 
 /* ************************************************************************** */
 /* Other Functions                                                            */
@@ -22,34 +21,19 @@ void	Command::add( PhoneBook& phoneBook ) {
 	Contact	contact;
 
 	contact.setName( Command::tag( "name" ));
-	if ( contact.getName() == "" ) {
-		std::cout << "[error]: empty command" << std::endl;
-		return ;
-	}
+	if ( contact.getName() == "" ) { ERROR( "empty command" ); }
 
 	contact.setLastName( Command::tag( "last name" ));
-	if ( contact.getLastName() == "" ) {
-		std::cout << "[error]: empty command" << std::endl;
-		return ;
-	}
+	if ( contact.getLastName() == "" ) { ERROR( "empty command" ); }
 
 	contact.setNickname( Command::tag( "nickname" ));
-	if ( contact.getNickname() == "" ) {
-		std::cout << "[error]: empty command" << std::endl;
-		return ;
-	}
+	if ( contact.getNickname() == "" ) { ERROR( "empty command" ); }
 
 	contact.setPhone( Command::tag( "phone" ));
-	if ( contact.getPhone() == "" ) {
-		std::cout << "[error]: empty command" << std::endl;
-		return ;
-	}
+	if ( contact.getPhone() == "" ) { ERROR( "empty command" ); }
 
 	contact.setSecret( Command::tag( "secret" ));
-	if ( contact.getSecret() == "" ) {
-		std::cout << "[error]: empty command" << std::endl;
-		return ;
-	}
+	if ( contact.getSecret() == "" ) { ERROR( "empty command" ); }
 
 	phoneBook.addContact(contact);
 }
@@ -60,26 +44,33 @@ void	Command::search( PhoneBook& phoneBook ) {
 	int			idx;
 	std::string	str;
 
-	if ( phoneBook.getNuContacts() == 0 ) {
-		std::cout << "[error]: no contacts" << std::endl;
-		return ;
-	}
+	if ( phoneBook.getNuContacts() == 0 )
+		ERROR( "no contacts" );
 
-	std::cout << "|" << std::setfill(' ') << std::setw(10) << std::right << "idx" << "|";
-	std::cout << std::setfill(' ') << std::right << std::setw(10) << "name" << "|";
-	std::cout << std::setfill(' ') << std::right << std::setw(10) << "last name" << "|";
-	std::cout << std::setfill(' ') << std::right << std::setw(10) << "nick" << "|" << std::endl;
-	std::cout << "|" << std::setfill('-') << std::setw(44) << "|" << std::endl;
+	std::cout << "|" << std::setfill( ' ' ) << std::setw( 10 ) << std::right
+			  << "idx" << "|";
+	std::cout << std::setfill( ' ' ) << std::right << std::setw( 10 ) << "name"
+			  << "|";
+	std::cout << std::setfill( ' ' ) << std::right << std::setw( 10 )
+			  << "last name" << "|";
+	std::cout << std::setfill( ' ' ) << std::right << std::setw( 10 ) << "nick"
+			  << "|" << std::endl;
+	std::cout << "|" << std::setfill( '-' ) << std::setw( 44 ) << "|"
+			  << std::endl;
 
 	for ( int i = 0; i < phoneBook.getNuContacts(); i++ ) {
 
-		std::cout << "|" << std::setfill(' ') << std::right << std::setw(10) << i << "|";
-		std::cout << std::setfill(' ') << std::setw(10) << std::right << phoneBook.getContact(i).getNameF() << "|";
-		std::cout << std::setfill(' ') << std::setw(10) << std::right << phoneBook.getContact(i).getLastNameF() << "|";
-		std::cout << std::setfill(' ') << std::setw(10) << std::right << phoneBook.getContact(i).getNicknameF() << "|" << std::endl;
+		std::cout << "|" << std::setfill( ' ' ) << std::right << std::setw( 10 )
+				  << i << "|";
+		std::cout << std::setfill( ' ' ) << std::setw( 10 ) << std::right
+				  << phoneBook.getContact(i).getNameF() << "|";
+		std::cout << std::setfill( ' ' ) << std::setw( 10 ) << std::right
+				  << phoneBook.getContact(i).getLastNameF() << "|";
+		std::cout << std::setfill( ' ' ) << std::setw( 10 ) << std::right
+				  << phoneBook.getContact(i).getNicknameF() << "|" << std::endl;
 	}
 
-	while (1) {
+	while ( 1 ) {
 		str = Command::tag( "index" );
 		idx = 0;
 
@@ -90,8 +81,11 @@ void	Command::search( PhoneBook& phoneBook ) {
 			}
 		}
 
-		if ( !idx && str[0] )
-			idx = std::stoi( str );
+		if ( !idx && str[0] ) {
+			std::stringstream	s;
+			s << str;
+			s >> idx;
+		}
 		else
 			idx = -1;
 
@@ -106,7 +100,7 @@ std::string	Command::tag( std::string tag ) {
 
 	std::string line;
 
-	std::cout << std::setfill(' ') << std::setw(4) << "["<< tag << "]: ";
+	std::cout << std::setfill( ' ' ) << std::setw( 4 ) << "["<< tag << "]: ";
 	getline( std::cin, line );
 
 	return ( line );
