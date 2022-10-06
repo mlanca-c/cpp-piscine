@@ -17,22 +17,25 @@
 /* ************************************************************************** */
 
 Fixed::Fixed( void ) : _raw( 0 ) {
-	DEBUG( "<Fixed> default constructor called");
+	DEBUG( "Fixed <" << this->toFloat() << "> default constructor called" );
+}
+
+Fixed::~Fixed( void ) {
+	DEBUG( "Fixed <" << this->toFloat() << "> destructor called" );
 }
 
 Fixed::Fixed( Fixed const& src ) {
-	DEBUG( "<Fixed> copy constructor called" );
+
 	*this = src;
+	DEBUG( "Fixed <" << this->toFloat() << "> copy constructor called" );
 }
 
-Fixed::~Fixed( void ) { DEBUG( "<Fixed> destructor called"); }
-
 Fixed::Fixed ( int const i ) : _raw( i << this->_fBits ) {
-	DEBUG( "<Fixed:"<< i << "> constructor called");
+	DEBUG( "Fixed <" << this->toInt() << "> constructor called" );
 }
 
 Fixed::Fixed ( float const f ) : _raw( roundf( f * ( 1 << this->_fBits ))) {
-	DEBUG( "<Fixed:" << f << "> constructor called");
+	DEBUG( "Fixed <" << this->toFloat() << "> constructor called" );
 }
 
 /* ************************************************************************** */
@@ -40,12 +43,13 @@ Fixed::Fixed ( float const f ) : _raw( roundf( f * ( 1 << this->_fBits ))) {
 /* ************************************************************************** */
 
 Fixed&	Fixed::operator=( Fixed const& rhs ) {
-	DEBUG("<Fixed> operator= called");
+
 	this->setRawBits( rhs.getRawBits() );
-	return (*this);
+	return ( *this );
 }
 
 std::ostream&	operator<<( std::ostream& os, Fixed const& rhs ) {
+
 	os << rhs.toFloat();
 	return ( os );
 }
@@ -54,7 +58,7 @@ std::ostream&	operator<<( std::ostream& os, Fixed const& rhs ) {
 /* Getters and Setters                                                        */
 /* ************************************************************************** */
 
-int	Fixed::getRawBits( void ) const { return (this->_raw); }
+int	Fixed::getRawBits( void ) const { return ( this->_raw ); }
 
 void	Fixed::setRawBits( int const raw ) { this->_raw = raw; }
 

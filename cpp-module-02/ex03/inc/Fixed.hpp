@@ -31,8 +31,8 @@ class Fixed {
 
 		/* Constructor and Destructor */
 		Fixed( void );
-		Fixed( Fixed const& src );
 		~Fixed( void );
+		Fixed( Fixed const& src );
 
 		Fixed ( int const i );
 		Fixed ( float const f );
