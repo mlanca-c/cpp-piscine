@@ -27,13 +27,13 @@ void	sed( std::string filename, std::string s1, std::string s2 ) {
 	s1 = argvIsForLosers( s1 );
 	s2 = argvIsForLosers( s2 );
 
-	file.open( filename );
+	file.open( filename.c_str() );
 	if ( !file.is_open() ) {
 		ERROR( filename << ": failed to open" );
 		return ;
 	}
 
-	replaceFile.open( filename + ".replace" );
+	replaceFile.open( (filename + ".replace").c_str() );
 	if ( !replaceFile.is_open() ) {
 		ERROR( filename << ".replace" << ": failed to create" );
 		return ;
