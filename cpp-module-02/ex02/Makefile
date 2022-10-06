@@ -168,6 +168,11 @@ endif
 # Generic debug flags
 DFLAGS := -g
 
+# Program Compiles in Debug Mode
+ifeq (${D}, 1)
+	CFLAGS += -DD=1
+endif
+
 # Address sanitizing flags
 ASAN := -fsanitize=address -fsanitize-recover=address
 ASAN += -fno-omit-frame-pointer -fno-common

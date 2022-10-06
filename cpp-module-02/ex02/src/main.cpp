@@ -17,7 +17,7 @@
 int	main( int argc, char *argv[] ) {
 
 	float	n1;
-	float	n2;
+	int		n2;
 
 	(void)argc;
 	(void)argv;
@@ -34,11 +34,8 @@ int	main( int argc, char *argv[] ) {
 		std::cout << b << std::endl;
 		std::cout << Fixed::max( a, b ) << std::endl;
 	}
-	if (argc != 3) {
-		return ( 0 );
-	}
-	n1 = std::stof( argv[1] );
-	n2 = std::stof( argv[2] );
+	n1 = 4.224;
+	n2 = 42;
 	Fixed	a = Fixed( n1 );
 	Fixed	b = Fixed( n2 );
 	{
