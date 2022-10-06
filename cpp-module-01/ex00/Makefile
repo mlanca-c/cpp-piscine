@@ -39,11 +39,7 @@
 # the library section.
 # **************************************************************************** #
 
-<<<<<<< HEAD:cpp-module-00/ex00/Makefile
-PROJECT	:= cpp-module-00
-=======
 PROJECT	:= cpp-module-01
->>>>>>> cpp-module-01:cpp-module-01/ex00/Makefile
 VERSION	:= 3
 
 USER	:= mlanca-c

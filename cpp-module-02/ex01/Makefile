@@ -39,7 +39,7 @@
 # the library section.
 # **************************************************************************** #
 
-PROJECT	:= cpp-module-00
+PROJECT	:= cpp-module-02
 VERSION	:= 3
 
 USER	:= mlanca-c
@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= phonebook
+NAME1	:= fixed
 
 NAMES	:= ${NAME1}
 

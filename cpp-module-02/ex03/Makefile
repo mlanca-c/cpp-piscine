@@ -39,7 +39,11 @@
 # the library section.
 # **************************************************************************** #
 
+<<<<<<< HEAD:cpp-module-00/ex01/Makefile
 PROJECT	:= cpp-module-00
+=======
+PROJECT	:= cpp-module-02
+>>>>>>> cpp-module-02:cpp-module-02/ex03/Makefile
 VERSION	:= 3
 
 USER	:= mlanca-c
@@ -48,7 +52,11 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
+<<<<<<< HEAD:cpp-module-00/ex01/Makefile
 NAME1	:= phonebook
+=======
+NAME1	:= bsq
+>>>>>>> cpp-module-02:cpp-module-02/ex03/Makefile
 
 NAMES	:= ${NAME1}
 
@@ -380,9 +388,12 @@ run: run_bin_1
 rund: CFLAGS += -DD=1
 rund: clean run
 
+<<<<<<< HEAD:cpp-module-00/ex01/Makefile
+=======
 run-%: ${BIN_ROOT}${NAME1}
 	${AT} ./${BIN_ROOT}${NAME1} $* ${BLOCK}
 
+>>>>>>> cpp-module-02:cpp-module-02/ex03/Makefile
 run_clean: run fclean clean_dep
 
 # **************************************************************************** #

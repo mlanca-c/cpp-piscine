@@ -39,7 +39,7 @@
 # the library section.
 # **************************************************************************** #
 
-PROJECT	:= cpp-module-00
+PROJECT	:= cpp-module-02
 VERSION	:= 3
 
 USER	:= mlanca-c
@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= phonebook
+NAME1	:= fixed
 
 NAMES	:= ${NAME1}
 
@@ -165,13 +165,13 @@ ifeq (${PEDANTIC},true)
 	endif
 endif
 
-# Generic debug flags
-DFLAGS := -g
-
 # Program Compiles in Debug Mode
 ifeq (${D}, 1)
 	CFLAGS += -DD=1
 endif
+
+# Generic debug flags
+DFLAGS := -g
 
 # Address sanitizing flags
 ASAN := -fsanitize=address -fsanitize-recover=address
