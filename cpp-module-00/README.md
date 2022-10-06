@@ -1,4 +1,4 @@
-# cpp-piscine Module-01
+# cpp-piscine Module-00
 
 [![Intro](https://img.shields.io/badge/Cursus-cpp_module_01-success?style=for-the-badge&logo=42)](https://github.com/mlanca-c/cpp-piscine)
  
@@ -28,4 +28,4 @@
 
 # Useful Links
 
- * [Wiki](https://github.com/mlanca-c/cpp-piscine/wiki/Module-01)
+ * [Wiki](https://github.com/mlanca-c/cpp-piscine/wiki/Module-00)
