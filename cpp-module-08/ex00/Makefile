@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= ex00
+NAME1	:= easyFind
 
 NAMES	:= ${NAME1}
 

@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= ex01
+NAME1	:= span
 
 NAMES	:= ${NAME1}
 

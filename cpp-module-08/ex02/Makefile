@@ -48,7 +48,7 @@ USER	:= mlanca-c
 # Project Variables
 # **************************************************************************** #
 
-NAME1	:= ex02
+NAME1	:= mutantStack
 
 NAMES	:= ${NAME1}
 

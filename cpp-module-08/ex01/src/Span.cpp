@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 12:39:38 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/07 12:56:46 by mlancac          ###   ########.fr       */
+/*   Created: 2022/10/07 13:21:53 by mlancac           #+#    #+#             */
+/*   Updated: 2022/10/07 15:07:09 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@
 /* Constructors and Destructors                                               */
 /* ************************************************************************** */
 
-Span::Span( void ) { DEBUG( "<Span> default constructor called" ); }
+Span::Span( void ) : _size( 0 ) {
+	DEBUG( "<Span> default constructor called" );
+}
 
 Span::~Span( void ) { DEBUG( "<Span> destructor called" ); }
 
-Span::Span( Span const& src ) : _size( src._size ), _vect( src._vect ) {
+Span::Span( Span const& src ) : _size( src._size ), _vector( src._vector ) {
 	DEBUG( "<Span> copy constructor called" );
 }
 
-Span::Span( unsigned int N ) : _size( N ) {
+Span::Span( unsigned int size ) : _size( size ) {
 	DEBUG( "<Span> constructor called" );
 }
 
@@ -33,56 +35,98 @@ Span::Span( unsigned int N ) : _size( N ) {
 /* ************************************************************************** */
 
 Span&	Span::operator=( Span const& rhs ) {
-
+	
 	this->_size = rhs._size;
-	this->_vect = rhs._vect;
+	this->_vector = rhs._vector;
 	return ( *this );
+}
+
+int const&	Span::operator[]( unsigned int i ) const {
+
+	if ( i >= this->_vector.size() )
+		throw ( Span::IndexOutOfBoundsException() );
+	return ( this->_vector[i] );
+}
+
+std::ostream&	operator<<( std::ostream& os, Span const& rhs ) {
+
+	os << "span: ";
+	for ( unsigned i = 0; i < rhs.getSize(); i++ )
+		os << rhs[i] << ( i == rhs.getSize() - 1 ? "" : ", " );
+	return ( os );
 }
 
 /* ************************************************************************** */
 /* Getters and Setters                                                        */
 /* ************************************************************************** */
 
-unsigned int	Span::size( void ) const { return ( this->_size ); }
+unsigned int	Span::getSize( void ) const { return ( this->_vector.size() ); }
 
 /* ************************************************************************** */
 /* Other Functions                                                            */
 /* ************************************************************************** */
 
-void	Span::addNumber( int n ) throw( std::exception ) {
+int	Span::shortestSpan( void ) const {
 
-	if ( this->_size > this->_vect.size() )
-		this->_vect.push_back( n );
-	else
-		throw( std::exception() );
+	if ( this->_vector.size() < 2 )
+		throw ( Span::NotEnoughElementsException() );
+
+	std::vector<int>::iterator	i;
+	std::vector<int>			tmp;
+	int							r;
+
+	tmp = this->_vector;
+	std::sort( tmp.begin(), tmp.end() );
+
+	r = *( tmp.begin() + 1 ) - *tmp.begin();
+	for ( i = tmp.begin() + 1; i != tmp.end() - 1; i++ )
+		if ( *( i + 1 ) - *i < r )
+			r = *( i + 1 ) - *i;
+	return ( r );
 }
 
-int	Span::shortestSpan( void ) const throw( std::exception ) {
+int	Span::longestSpan( void ) const {
 
-	if ( this->_vect.size() < 2 )
-		throw( std::exception() );
+	if ( this->_vector.size() < 2 )
+		throw ( Span::NotEnoughElementsException() );
 
-	std::vector<int>	vect( this->_vect );
-	std::sort( vect.begin(), vect.end() );
-	std::adjacent_difference( vect.begin(), vect.end(), vect.begin() );
-	return ( *std::min_element( vect.begin() + 1, vect.end() ));
+	std::vector<int>	tmp;
+
+	tmp = this->_vector;
+	std::sort( tmp.begin(), tmp.end() );
+
+    return ( *( tmp.end() - 1 ) - *tmp.begin() );
 }
 
-int	Span::longestSpan( void ) const throw( std::exception ) {
+void	Span::addNumber( int n ) {
 
-	if ( this->_vect.size() < 2 )
-		throw( std::exception() );
-
-	return ( *std::max_element( this->_vect.begin(), this->_vect.end() )
-		- *std::min_element( this->_vect.begin(), this->_vect.end() ));
+	if ( this->_vector.size() >= this->_size )
+		throw ( Span::NoMoreSpaceException() );
+	this->_vector.push_back( n );
 }
 
-void	Span::addNumbers(std::vector<int>::iterator it1,
-		std::vector<int>::iterator it2 ) throw( std::exception ) {
+void	Span::addRandomNumber( int n ) {
 
+	srand( time( NULL ));
 	try {
-		for ( std::vector<int>::iterator i = it1; i < it2; i++ )
-			addNumber( rand() );
+		for ( int i = 0; i < n; i++ )
+			this->addNumber( rand() );
 	}
-	catch ( std::exception& e ) { throw ( e ); }
+	catch ( std::exception& e ) { std::cout << e.what() << std::endl; }
+}
+
+/* ************************************************************************** */
+/* Exceptions                                                                 */
+/* ************************************************************************** */
+
+char const* Span::IndexOutOfBoundsException::what( void ) const throw() {
+	return ( "Span: Exception: index out of bounds" );
+}
+
+char const* Span::NotEnoughElementsException::what( void ) const throw() {
+	return ( "Span: Exception: not enough space" );
+}
+
+char const* Span::NoMoreSpaceException::what( void ) const throw() {
+	return ( "Span: Exception: no more space" );
 }

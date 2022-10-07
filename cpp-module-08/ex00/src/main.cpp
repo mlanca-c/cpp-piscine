@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlancac </var/spool/mail/mlancac>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 12:13:46 by mlancac           #+#    #+#             */
-/*   Updated: 2022/07/07 12:28:11 by mlancac          ###   ########.fr       */
+/*   Created: 2022/10/07 11:19:41 by mlancac           #+#    #+#             */
+/*   Updated: 2022/10/07 13:13:14 by mlancac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Debug.hpp"
-#include <vector>
-#include <list>
-#include <algorithm>
+#include "iostream"
+#include "vector"
+#include "sstream"
 #include "easyfind.hpp"
 
 int	main( int argc, char *argv[] ) {
@@ -22,36 +22,54 @@ int	main( int argc, char *argv[] ) {
 	( void )argc;
 	( void )argv;
 
-    int arr[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-	LOG( "array = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }" );
-    int n = sizeof(arr) / sizeof(arr[0]);
- 
-	std::vector<int> vect(arr, arr + n);
 	{
-		LOG( "test 1: finding 5 in array" );
-		try {
-			std::cout << *easyfind( vect, 5 ) << std::endl;
-		}
-		catch ( std::exception& e ) { std::cout << e.what() << std::endl; }
+		LOG( "test 1: testing with vectors and stdin" );
 
-		LOG( "test 2: finding 10 in array" );
-		try {
-			std::cout << *easyfind( vect, 10 ) << std::endl;
+		std::vector<int>	vec;
+		int					len;
+		std::string			str;
+		
+		len = 0;
+		while ( 1 ) {
+
+			std::stringstream	ss;
+			int					v;
+
+			std::cout << "v[" << len << "]: ";
+			getline(std::cin, str);
+			if ( str == "" )
+				break ;
+
+			ss << str;
+			ss >> v;
+
+			vec.push_back( v );
+			len++;
 		}
-		catch ( std::exception& e ) { std::cout << e.what() << std::endl; }
-	}
-	std::list<int> lst(arr, arr + n);
-	{
-		LOG( "test 3: finding 0 in list" );
-		try {
-			std::cout << *easyfind( lst, 0 ) << std::endl;
+
+		std::cout << "vector: { ";
+		for ( int i = 0; i < len; i++ )
+			std::cout << vec[i] << ( i == len - 1 ? " ": ", " );
+		std::cout << "}" << std::endl;
+
+		while ( 1 ) {
+
+			std::stringstream	ss;
+			int					v;
+
+			std::cout << "value to find: ";
+			getline(std::cin, str);
+			if ( str == "" )
+				break ;
+
+			ss << str;
+			ss >> v;
+
+			try {
+				std::cout << *easyfind( vec, v ) << std::endl;
+			}
+			catch ( std::exception& e ) { std::cout << e.what() << std::endl; }
 		}
-		catch ( std::exception& e ) { std::cout << e.what() << std::endl; }
-		LOG( "test 4: finding -1 in list" );
-		try {
-			std::cout << *easyfind( lst, -1 ) << std::endl;
-		}
-		catch ( std::exception& e ) { std::cout << e.what() << std::endl; }
 	}
 
 	return ( 0 );
